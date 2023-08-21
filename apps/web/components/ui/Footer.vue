@@ -79,12 +79,18 @@
         </p>
       </div>
     </div>
+    <CookieBar />
   </footer>
 </template>
 
 <script setup lang="ts">
+import { useContext } from '@nuxtjs/composition-api';
 import { SfButton, SfLink, SfListItem } from '@storefront-ui/vue';
+import CookieBar from '~/components/CookieBar.vue';
+import { useCookieBar } from '~/composables';
 import { bottomLinks, categories, companyName, contactOptions, socialMedia } from '~/mocks';
 
+const { $config, app } = useContext();
 const NuxtLink = resolveComponent('NuxtLink');
+const { bannerIsHidden } = useCookieBar(app.$cookies, 'consent-cookie', 0, $config.cookieGroups);
 </script>

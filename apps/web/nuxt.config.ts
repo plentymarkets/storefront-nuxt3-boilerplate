@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import cookieConfig from './cookie.config';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   typescript: {
@@ -19,6 +21,9 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-180x180.png' },
       ],
     },
+  },
+  publicRuntimeConfig: {
+    cookieGroups: cookieConfig,
   },
   appConfig: {
     titleSuffix: 'Vue Storefront Nuxt3 Boilerplate',
