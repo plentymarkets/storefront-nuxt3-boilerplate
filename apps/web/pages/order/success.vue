@@ -110,6 +110,20 @@
           <p>{{ orderGetters.getPaymentMethodName(orderData) }}</p>
           <p>{{ orderGetters.getPaymentStatus(orderData) }}</p>
         </div>
+        <div>
+          <div class="mb-1">
+            <SfButton variant="secondary" class="w-full">Tracking your order</SfButton>
+          </div>
+          <div class="mb-1">
+            <SfButton variant="secondary" class="w-full">Delivery notes</SfButton>
+          </div>
+          <div class="mb-1">
+            <SfButton variant="secondary" class="w-full">Invoice</SfButton>
+          </div>
+          <div class="mb-1">
+            <SfButton variant="secondary" class="w-full">Return Items</SfButton>
+          </div>
+        </div>
       </div>
     </div>
 
