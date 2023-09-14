@@ -110,18 +110,9 @@
           <p>{{ orderGetters.getPaymentMethodName(orderData) }}</p>
           <p>{{ orderGetters.getPaymentStatus(orderData) }}</p>
         </div>
-        <div>
+        <div v-if="orderData && orderData.trackingURL">
           <div class="mb-1">
-            <SfButton variant="secondary" class="w-full">Tracking your order</SfButton>
-          </div>
-          <div class="mb-1">
-            <SfButton variant="secondary" class="w-full">Delivery notes</SfButton>
-          </div>
-          <div class="mb-1">
-            <SfButton variant="secondary" class="w-full">Invoice</SfButton>
-          </div>
-          <div class="mb-1">
-            <SfButton variant="secondary" class="w-full">Return Items</SfButton>
+            <SfButton :tag="NuxtLink" :href="orderData.trackingURL" variant="secondary" class="w-full">Tracking your order</SfButton>
           </div>
         </div>
       </div>
