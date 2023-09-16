@@ -33,15 +33,16 @@
         <tr v-for="orderReturn in data.entries" :key="orderReturn.order.id" class="border-b border-neutral-200">
           <td class="lg:p-4 p-2 lg:whitespace-nowrap">{{ orderReturn.order.id }}</td>
           <td class="lg:p-4 p-2">{{ $d(new Date(orderReturn.order.dates[1].date)) }}</td>
-          <td class="lg:p-4 p-2">{{ orderReturn.paymentMethodName }}</td>
+          <td class="lg:p-4 p-2 w-full">{{ orderReturn.paymentMethodName }}</td>
         </tr>
       </tbody>
     </table>
     <UiPagination
-      v-if="data.entries.length > 0"
-      :current-page="getFacetsFromURL().page ?? 1"
-      :total-items="data.entries.length"
-      :page-size="20"
+      v-if="data?.entries?.length"
+      :disabled="loading"
+      :current-page="data.page"
+      :total-items="data.totalsCount"
+      :page-size="data.itemsPerPage"
       :max-visible-pages="maxVisiblePages"
     />
   </div>
@@ -55,11 +56,11 @@ definePageMeta({
   layout: 'account',
 });
 const { isOpen, close } = useDisclosure();
-const { getFacetsFromURL } = useCategoryFilter();
 const isTabletScreen = useMediaQuery(mediaQueries.tablet);
 const isWideScreen = useMediaQuery(mediaQueries.desktop);
 const maxVisiblePages = ref(1);
 const setMaxVisiblePages = (isWide: boolean) => (maxVisiblePages.value = isWide ? 5 : 1);
+const route = useRoute();
 
 watch(isWideScreen, (value) => setMaxVisiblePages(value));
 onMounted(() => setMaxVisiblePages(isWideScreen.value));
@@ -68,6 +69,18 @@ watch(isTabletScreen, (value) => {
     close();
   }
 });
-const { fetchCustomerReturns, data } = useCustomerReturns();
-await fetchCustomerReturns();
+const { fetchCustomerReturns, data, loading } = useCustomerReturns();
+const handleQueryUpdate = async () => {
+  await fetchCustomerReturns({
+    page: Number(route.query.page as string) || defaults.DEFAULT_PAGE,
+  });
+};
+await handleQueryUpdate();
+
+watch(
+  () => route.query,
+  async () => {
+    await handleQueryUpdate();
+  },
+);
 </script>
