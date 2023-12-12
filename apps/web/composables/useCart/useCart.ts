@@ -108,6 +108,7 @@ export const useCart: UseCartReturn = () => {
         useSdk().plentysystems.doAddCartItem({
           productId: params.productId,
           quantity: params.quantity,
+          basketItemOrderParams: params.basketItemOrderParams,
         }),
       );
 

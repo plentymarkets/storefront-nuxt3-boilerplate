@@ -117,10 +117,20 @@ const basePriceSingleValue = computed(
     productGetters.getDefaultBaseSinglePrice(product.value),
 );
 
+const test = [{
+  propertyId: 27,
+  type: 'empty',
+  name: 'Order Properties - without markup/surcharge With option "Preselected" and "Required"',
+  property: {
+    value: true
+  }
+}];
+
 const handleAddToCart = async () => {
   await addToCart({
     productId: Number(productGetters.getId(product.value)),
     quantity: Number(quantitySelectorValue.value),
+    basketItemOrderParams: test
   });
 
   send({ message: t('addedToCart'), type: 'positive' });
