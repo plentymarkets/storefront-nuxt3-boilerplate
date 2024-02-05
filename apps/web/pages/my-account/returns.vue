@@ -66,6 +66,11 @@
             <td class="lg:p-4 p-2 lg:whitespace-nowrap">{{ orderGetters.getId(orderReturn) }}</td>
             <td class="lg:p-4 p-2 lg:whitespace-nowrap">{{ orderGetters.getDate(orderReturn) }}</td>
             <td class="lg:p-4 p-2">{{ orderGetters.getPaymentMethodName(orderReturn) }}</td>
+            <td class="lg:p-4 p-2">
+              <SfButton :tag="NuxtLink" size="sm" variant="tertiary" @click="openReturn(orderReturn)">
+                {{ $t('account.ordersAndReturns.details') }}
+              </SfButton>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -78,6 +83,7 @@
         :max-visible-pages="maxVisiblePages"
       />
     </div>
+    <OrderReturnDetails :is-open="isReturnOpen" @close="closeReturn" />
   </ClientOnly>
 </template>
 
@@ -92,12 +98,19 @@ definePageMeta({
 
 const { data, fetchCustomerReturns, loading } = useCustomerReturns();
 const { isOpen, close } = useDisclosure();
-
+const { isOpen: isReturnOpen, open: openReturnForm, close: closeReturn } = useDisclosure();
 const { isTablet, isDesktop } = useBreakpoints();
 
 const maxVisiblePages = ref(1);
 const route = useRoute();
 const setMaxVisiblePages = (isWide: boolean) => (maxVisiblePages.value = isWide ? 5 : 1);
+const NuxtLink = resolveComponent('NuxtLink');
+const { setCurrentReturnOrder } = useReturnOrder();
+
+const openReturn = (order: Order) => {
+  setCurrentReturnOrder(order);
+  openReturnForm();
+};
 
 watch(isDesktop, (value) => setMaxVisiblePages(value));
 onMounted(() => setMaxVisiblePages(isDesktop.value));

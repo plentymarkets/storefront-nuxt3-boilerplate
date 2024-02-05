@@ -84,14 +84,7 @@
               <td class="lg:p-4 p-2">{{ orderGetters.getShippingDate(order) ?? '' }}</td>
               <td class="lg:p-4 p-2 lg:whitespace-nowrap w-full">{{ orderGetters.getStatus(order) }}</td>
               <td class="lg:p-4 p-2 lg:whitespace-nowrap w-full">
-                <SfButton
-                  v-if="orderGetters.isReturnable(order)"
-                  @click="openReturn(order)"
-                  size="sm"
-                  variant="tertiary"
-                >
-                  {{ $t('returns.return') }}</SfButton
-                >
+                <SfButton @click="openReturn(order)" size="sm" variant="tertiary"> {{ $t('returns.return') }}</SfButton>
               </td>
               <td class="py-1.5 lg:pl-4 pl-2 text-right w-full">
                 <SfButton
