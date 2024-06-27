@@ -13,6 +13,32 @@
       <UiFormLabel>{{ $t('form.lastNameLabel') }} {{ $t('form.required') }}</UiFormLabel>
       <SfInput name="lastName" autocomplete="family-name" v-model="defaultValues.lastName" required />
     </label>
+
+    <ClientOnly>
+      <SfLink
+        href="#"
+        class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded md:col-span-3 mb-2"
+        @click.prevent="changeHasCompany()"
+      >
+        <span v-if="!hasCompany">{{ $t('newCheckout.addCompanyData') }}</span>
+        <span v-else>{{ $t('newCheckout.removeCompanyData') }}</span>
+      </SfLink>
+    </ClientOnly>
+    <div v-if="hasCompany" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+      <label class="md:col-span-1">
+        <UiFormLabel class="flex">
+          <span class="mr-1">{{ $t('newCheckout.companyName') }} {{ $t('form.required') }}</span>
+        </UiFormLabel>
+        <SfInput name="companyName" type="text" v-model="defaultValues.name1" />
+      </label>
+      <label class="md:col-span-1">
+        <UiFormLabel class="flex">
+          <span class="mr-1">{{ $t('newCheckout.vatid') }} {{ $t('form.required') }}</span>
+        </UiFormLabel>
+        <SfInput name="vatId" type="text" v-model="defaultValues.vatNumber" />
+      </label>
+    </div>
+
     <label class="md:col-span-3">
       <UiFormLabel class="flex">
         <span class="mr-1">{{ $t('form.phoneLabel') }}</span>
@@ -99,9 +125,8 @@
 </template>
 
 <script setup lang="ts">
-import { type Address, AddressType } from '@plentymarkets/shop-api';
-import { userAddressGetters } from '@plentymarkets/shop-api';
-import { SfButton, SfCheckbox, SfInput, SfLoaderCircular, SfSelect } from '@storefront-ui/vue';
+import { type Address, AddressType, userAddressGetters } from '@plentymarkets/shop-api';
+import { SfButton, SfCheckbox, SfInput, SfLink, SfLoaderCircular, SfSelect } from '@storefront-ui/vue';
 import type { AddressFormProps } from '~/components/AddressForm/types';
 const { loading: loadBilling, useAsShippingAddress } = useAddress(AddressType.Billing);
 const { loading: loadShipping } = useAddress(AddressType.Shipping);
@@ -110,6 +135,11 @@ const props = withDefaults(defineProps<AddressFormProps>(), {});
 const isCartUpdateLoading = computed(() => loadBilling.value || loadShipping.value);
 
 const savedAddress = props.savedAddress || ({} as Address);
+
+const hasCompany = ref(false);
+if (userAddressGetters.getCompanyName(savedAddress) || userAddressGetters.getTaxNumber(savedAddress)) {
+  hasCompany.value = true;
+}
 
 const defaultValues = ref({
   firstName: userAddressGetters.getFirstName(savedAddress),
@@ -122,6 +152,8 @@ const defaultValues = ref({
   state: userAddressGetters.getProvince(savedAddress),
   zipCode: userAddressGetters.getPostCode(savedAddress),
   primary: !userAddressGetters.getId(savedAddress),
+  name1: userAddressGetters.getCompanyName(savedAddress),
+  vatNumber: userAddressGetters.getTaxNumber(savedAddress),
 });
 
 const clearInputs = () => {
@@ -136,7 +168,14 @@ const clearInputs = () => {
     state: '',
     zipCode: '',
     primary: !userAddressGetters.getId(savedAddress),
+    name1: '',
+    vatNumber: '',
   };
+};
+
+const changeHasCompany = () => {
+  hasCompany.value = !hasCompany.value;
+  defaultValues.value = { ...defaultValues.value, name1: '', vatNumber: '' };
 };
 
 const states = computed(() => {

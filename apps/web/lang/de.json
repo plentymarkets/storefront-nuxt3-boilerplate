@@ -800,6 +800,12 @@
     "notValidVariation": "Bitte wählen Sie eine gültige Variante.",
     "productInformationMissing": "Produktinformationen fehlen"
   },
+  "newCheckout": {
+    "companyName": "Name der Firma",
+    "vatid": "Vat-ID",
+    "addCompanyData": "Firmendaten hinzufügen",
+    "removeCompanyData": "- Unternehmensdaten entfernen"
+  },
   "quickCheckout": {
     "heading": "Zum Warenkorb hinzugefügt",
     "subTotal": "Zwischensumme",

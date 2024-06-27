@@ -39,6 +39,18 @@ const addressFormNewReference = ref<InstanceType<typeof AddressFormNew> | null>(
 
 getActiveShippingCountries();
 
+const saveAddress = async (address: Address) => {
+  const result = await updateAddress(address);
+  if (props.type === AddressType.Billing && useAsShippingAddress.value) {
+    setCheckoutAddress(AddressType.Shipping, -99);
+  } else if (result?.id) {
+    setCheckoutAddress(AddressType.Shipping, result.id);
+  }
+
+  emit('on-saved');
+  editMode.value = false;
+};
+
 const edit = () => {
   editMode.value = !editMode.value;
 };

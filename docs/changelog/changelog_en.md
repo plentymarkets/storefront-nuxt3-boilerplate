@@ -10,7 +10,7 @@
 
 - All `@plentymarkets/shop-sdk` imports have to be renamed to `@plentymarkets/shop-api`
 - useSdk() is now autoimported and can no longer be imported remove all `import { useSdk } from '~/sdk';` imports.
-
+- Add company details on checkout form.
 [full sdk migration changelog]("https://github.com/plentymarkets/plentyshop-pwa/pull/452/files")
 
 ### New

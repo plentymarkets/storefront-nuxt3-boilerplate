@@ -800,6 +800,12 @@
     "notValidVariation": "Please select a valid variation.",
     "productInformationMissing": "Product information missing"
   },
+  "newCheckout": {
+    "companyName": "Company Name",
+    "vatid": "Vat-ID",
+    "addCompanyData": "+ Add company data",
+    "removeCompanyData": "- Remove Company Data"
+  },
   "quickCheckout": {
     "heading": "Added to shopping cart",
     "subTotal": "Items subtotal",
