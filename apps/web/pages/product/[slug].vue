@@ -17,7 +17,7 @@
           <NuxtLazyHydrate when-visible>
             <ProductAccordion v-if="product" :product="product" />
           </NuxtLazyHydrate>
-          <NuxtLazyHydrate when-visible>
+          <NuxtLazyHydrate when-idle>
             <ReviewsAccordion
               v-if="product"
               :product="product"
