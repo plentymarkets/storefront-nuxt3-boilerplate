@@ -3,7 +3,7 @@ import fetchFile from './helpers/fetchFileHelper';
 import { ConfigItem } from './types/ConfigItem';
 
 const fetchLogo = async (data: { [key: string]: Array<ConfigItem> }) => {
-  const logoUrl = data['store'].find((setting: ConfigItem) => setting.key === 'logo');
+  const logoUrl = data['store']?.find((setting: ConfigItem) => setting.key === 'logo');
 
   if (!logoUrl?.value) {
     console.error('Logo URL not found.');
@@ -14,7 +14,7 @@ const fetchLogo = async (data: { [key: string]: Array<ConfigItem> }) => {
   console.log('Fetching logo from:', logoUrl.value);
 
   const fileType = logoUrl.value.split('.').pop();
-  const logoPath = path.resolve(__dirname, `../public/logo.${fileType}`);
+  const logoPath = path.resolve(__dirname, `../public/images/logo.${fileType}`);
 
   fetchFile(logoUrl.value, logoPath);
 };
