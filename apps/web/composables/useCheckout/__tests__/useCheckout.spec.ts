@@ -134,11 +134,8 @@ describe('useCheckout', () => {
       };
     });
     const { validateTerms } = useCheckout();
-    const callback = vi.fn();
 
-    validateTerms(callback);
-
-    expect(callback).toHaveBeenCalledWith(true);
+    expect(validateTerms()).toBe(true);
   });
 
   it('should test if terms are not accepted', () => {
@@ -149,11 +146,8 @@ describe('useCheckout', () => {
       };
     });
     const { validateTerms } = useCheckout();
-    const callback = vi.fn();
 
-    validateTerms(callback);
-
-    expect(callback).toHaveBeenCalledWith(false);
+    expect(validateTerms()).toBe(false);
   });
 
   it('should set initial state when persisting shipping address', () => {
