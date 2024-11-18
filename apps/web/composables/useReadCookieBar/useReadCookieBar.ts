@@ -152,6 +152,34 @@ export const useReadCookieBar: UseReadCookieBarReturn = () => {
     setConsent();
   };
 
+  watch(
+    () => state.value.data.groups,
+    (newGroups, oldGroups) => {
+      let consentRevoked = false;
+
+      newGroups.forEach((cookieGroup, groupIndex) => {
+        cookieGroup.cookies.forEach((cookie, cookieIndex) => {
+          const oldConsent = oldGroups[groupIndex]?.cookies[cookieIndex]?.accepted;
+          const newConsent = cookie.accepted;
+
+          // Detect if consent has been revoked for any cookie
+          if (oldConsent && !newConsent) {
+            consentRevoked = true;
+          }
+        });
+      });
+
+      if (consentRevoked) {
+        // Reload page if consent has been revoked
+        location.reload();
+      } else {
+        // Load third-party scripts if consent is granted
+        loadThirdPartyScripts();
+      }
+    },
+    { deep: true, immediate: true }, // Ensures nested changes are watched and executes immediately
+  );
+
   return {
     ...toRefs(state.value),
     changeVisibilityState,
