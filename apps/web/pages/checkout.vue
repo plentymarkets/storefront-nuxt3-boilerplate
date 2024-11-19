@@ -90,6 +90,7 @@
               </template>
               <template v-else>{{ t('buy') }}</template>
             </UiButton>
+            <div id="paypal-button-container"></div>
           </OrderSummary>
         </div>
       </div>
