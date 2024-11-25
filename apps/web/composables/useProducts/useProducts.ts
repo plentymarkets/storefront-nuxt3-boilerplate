@@ -48,10 +48,6 @@ export const useProducts: UseProductsReturn = (category = '') => {
       state.value.data = data.value.data;
     }
 
-    if (state.value.data?.facets?.length) {
-      state.value.data.facets = state.value.data.facets.filter((facet) => facet.id !== 'feedback');
-    }
-
     state.value.loading = false;
     return state.value.data;
   };

@@ -33,7 +33,7 @@ export const useGooglePay = () => {
     const { data: cart } = useCart();
     const currency = computed(() => cartGetters.getCurrency(cart.value) || (useAppConfig().fallbackCurrency as string));
     const { getScript } = usePayPal();
-    const script = await getScript(currency.value);
+    const script = await getScript(currency.value, true);
 
     if (!script) return false;
 
@@ -153,20 +153,24 @@ export const useGooglePay = () => {
   };
 
   const checkIsEligible = async () => {
-    if (await initialize()) {
-      const request = getIsReadyToPayRequest();
-      const response = await toRaw(state.value.paymentsClient).isReadyToPay(request);
+    try {
+      if (await initialize()) {
+        const request = getIsReadyToPayRequest();
+        const response = await toRaw(state.value.paymentsClient).isReadyToPay(request);
 
-      if (response.result) {
-        await useSdk().plentysystems.doHandleAllowPaymentGooglePay({
-          allowedPaymentMethods: toRaw(
-            state.value.googleConfig.allowedPaymentMethods,
-          ) as PayPalGooglePayAllowedPaymentMethod[],
-        });
-        return true;
+        if (response.result) {
+          await useSdk().plentysystems.doHandleAllowPaymentGooglePay({
+            allowedPaymentMethods: toRaw(
+              state.value.googleConfig.allowedPaymentMethods,
+            ) as PayPalGooglePayAllowedPaymentMethod[],
+          });
+          return true;
+        }
       }
+      return false;
+    } catch {
+      return false;
     }
-    return false;
   };
 
   return {

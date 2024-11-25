@@ -7,7 +7,6 @@ import type {
   PayPalGetOrderDetailsParams,
 } from '@plentymarkets/shop-api';
 import { paypalGetters } from '@plentymarkets/shop-api';
-import { PayPalLoadScript, PayPalScript } from '~/composables';
 
 const localeMap: Record<string, string> = { de: 'de_DE' };
 const getLocaleForPayPal = (locale: string): string => localeMap[locale] || 'en_US';
@@ -98,6 +97,9 @@ export const usePayPal = () => {
     const { $i18n } = useNuxtApp();
     const localePayPal = getLocaleForPayPal($i18n.locale.value);
     const scriptKey = `${currency}_${localePayPal}_${commit}`;
+
+    const { consent } = useCookieConsent('CookieBar.functional.cookies.payPal.name');
+    if (!consent.value) return null;
 
     if (state.value.loadingScripts[scriptKey] !== undefined) {
       state.value.isReady = true;

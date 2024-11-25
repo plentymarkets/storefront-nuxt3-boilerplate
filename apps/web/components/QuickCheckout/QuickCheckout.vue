@@ -87,7 +87,7 @@
         >
           {{ t('goToCheckout') }}
         </UiButton>
-        <OrDivider class="my-4" v-if="isPayPalReady" />
+        <OrDivider class="my-4" v-if="isPaypalAvailable" />
         <PayPalExpressButton class="w-full text-center" type="CartPreview" @on-approved="isOpen = false" />
         <PayPalPayLaterBanner placement="payment" :amount="totals.total" />
       </div>
@@ -109,7 +109,7 @@ const runtimeConfig = useRuntimeConfig();
 const showNetPrices = runtimeConfig.public.showNetPrices;
 const localePath = useLocalePath();
 const { data: cart, lastUpdatedCartItem } = useCart();
-const { isReady: isPayPalReady, loadConfig } = usePayPal();
+const { isAvailable: isPaypalAvailable, loadConfig } = usePayPal();
 const { addModernImageExtension } = useModernImage();
 const { isOpen, timer, startTimer, endTimer, closeQuickCheckout, hasTimer, quantity } = useQuickCheckout();
 const cartItemsCount = computed(() => cart.value?.items?.reduce((price, { quantity }) => price + quantity, 0) ?? 0);

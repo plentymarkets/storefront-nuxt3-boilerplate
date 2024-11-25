@@ -9,7 +9,7 @@
       @slide-change="onSlideChange"
     >
       <SwiperSlide v-for="(heroItem, index) in heroItemProps" :key="index" class="md:px-7 lg:px-15">
-        <UiHeroContent :hero-item-props="heroItem" :current-size-key="heroItem.actualBackgroundSize" />
+        <UiHeroContent :hero-item-props="heroItem" />
       </SwiperSlide>
     </Swiper>
   </div>

@@ -75,9 +75,9 @@
             {{ productGetters.getShortDescription(product) }}
           </div>
 
+          <ProductAttributes :product="product" />
           <BundleOrderItems v-if="product.bundleComponents" :product="product" />
           <OrderProperties :product="product" />
-          <ProductAttributes :product="product" />
           <GraduatedPriceList :product="product" :count="quantitySelectorValue" />
 
           <div class="mt-4">

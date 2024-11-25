@@ -26,7 +26,7 @@
               :label="productPropertyGetters.getOrderPropertyDescription(productProperty)"
               :placement="'bottom'"
               :show-arrow="true"
-              class="ml-2"
+              class="ml-2 z-50"
             >
               <SfIconInfo :size="'sm'" />
             </SfTooltip>

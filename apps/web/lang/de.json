@@ -49,6 +49,11 @@
           "name": "Script-Demo",
           "provider": "plentysystems AG",
           "status": "Anwendungsbeispiel zum Laden eines Skripts nach Einwilligung."
+        },
+        "payPal": {
+          "name": "paypal",
+          "provider": "PayPal (Europe) S.à r.l. et Cie, S.C.A.",
+          "status": "Erforderlich für die Zahlungsabwicklung über PayPal."
         }
       },
       "description": "Diese Cookies ermöglichen, dass die von Nutzern getroffenen Auswahlmöglichkeiten und bevorzugte Einstellungen (z.B. das Deaktivieren der Sprachweiterleitung) gespeichert werden können.",
@@ -767,7 +772,9 @@
     "unbrandedCvv": "Kartenprüfnummer",
     "unbrandedExpirationDate": "Ablaufdatum",
     "unbrandedNameOnCard": "Karteninhaber",
-    "unbrandedPay": "Bezahlen"
+    "unbrandedPay": "Bezahlen",
+    "cookieNotAccepted": "Bitte akzeptieren Sie unsere Cookies, um PayPal zu nutzen.",
+    "openSettings": "Cookie-Einstellungen öffnen"
   },
   "perPage": "Pro Seite",
   "phone": "Telefonnummer",
@@ -913,6 +920,15 @@
       "validationFailed": "Die Adresse ist ungültig."
     },
     "cart": {
+      "addToBasket": {
+        "itemSetComponentMismatch": "Es liegt eine Unstimmigkeit bei den Komponenten des Artikelsets vor, und es kann somit nicht zum Warenkorb hinzugefügt werden.",
+        "maxItemQuantityReached": "Die maximale Menge für diesen Artikel wurde erreicht und kann somit nicht zum Warenkorb hinzugefügt werden.",
+        "maxVariationQuantityReached": "Die maximale Menge für diese Variante wurde erreicht und kann somit nicht zum Warenkorb hinzugefügt werden.",
+        "minVariationQuantityNotReached": "Die Mindestmenge für diese Variante wurde nicht erreicht und kann somit nicht zum Warenkorb hinzugefügt werden.",
+        "notEnoughStockForVariation": "Es ist nicht genügend Bestand für diese Variante verfügbar.",
+        "unknownError": "Beim Hinzufügen des Artikels ist ein unbekannter Fehler aufgetreten. Bitte versuche es erneut.",
+        "variationNotFound": "Die ausgewählte Variante wurde nicht gefunden und kann somit nicht zum Warenkorb hinzugefügt werden."
+      },
       "failedToRemoveItem": "Der Artikel konnte nicht entfernt werden.",
       "reachedMaximumQuantity": "Die maximale Bestellmenge dieses Artikels wurde überschritten."
     },

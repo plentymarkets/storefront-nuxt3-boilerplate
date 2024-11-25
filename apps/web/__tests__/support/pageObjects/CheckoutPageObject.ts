@@ -224,6 +224,13 @@ export class CheckoutPageObject extends PageObject {
     return this;
   }
 
+  checkPayPal() {
+    cy.intercept('/plentysystems/setPaymentProvider').as('setPaymentProvider');
+    cy.getByTestId('payment-method-6001').check({ force: true });
+    cy.wait('@setPaymentProvider');
+    return this;
+  }
+
   fillAddressForm() {
     cy.getFixture('addressForm').then((fixture) => {
       this.fillForm(fixture);
@@ -242,5 +249,9 @@ export class CheckoutPageObject extends PageObject {
     this.postalCodeInput.type(fixture.zipCode);
     this.saveShipping.click({ force: true });
     return this;
+  }
+
+  get payPalButton() {
+    return cy.get('.paypal-buttons-context-iframe').first();
   }
 }

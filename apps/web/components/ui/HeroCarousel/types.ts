@@ -8,7 +8,7 @@ export type SizeKey = 'lg' | 'md' | 'sm' | 'xs';
 export type Sizes = Record<SizeKey, { width: string; height: string }>;
 
 export type HeroContentProps = {
-  image?: string;
+  image?: Record<SizeKey, string> | object;
   alt?: string;
   tagline?: string;
   taglineColor?: string;
@@ -18,6 +18,4 @@ export type HeroContentProps = {
   descriptionColor?: string;
   callToAction?: string;
   link?: string;
-  backgroundSizes: Sizes;
-  actualBackgroundSize: SizeKey;
 };

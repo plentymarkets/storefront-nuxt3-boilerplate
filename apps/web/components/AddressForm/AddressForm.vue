@@ -33,6 +33,8 @@
         v-model="defaultValues.country"
         @change="defaultValues.state = ''"
         :placeholder="$t('form.selectPlaceholder')"
+        wrapper-class-name="bg-white"
+        class="!ring-1 !ring-neutral-200"
         autocomplete="country-name"
         required
       >
@@ -60,9 +62,11 @@
       </UiFormLabel>
       <SfSelect
         v-model="defaultValues.state"
+        :placeholder="$t('form.selectPlaceholder')"
         name="state"
         autocomplete="address-level1"
-        :placeholder="$t('form.selectPlaceholder')"
+        wrapper-class-name="bg-white"
+        class="!ring-1 !ring-neutral-200"
       >
         <option v-for="(state, index) in states" :key="index" :value="state.id.toString()">{{ state.name }}</option>
       </SfSelect>

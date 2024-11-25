@@ -117,11 +117,13 @@
         v-model="country"
         v-bind="countryAttributes"
         :placeholder="$t('form.selectPlaceholder')"
-        autocomplete="country-name"
         :invalid="Boolean(errors['country'])"
+        wrapper-class-name="bg-white"
+        class="!ring-1 !ring-neutral-200"
+        autocomplete="country-name"
       >
         <option
-          v-for="(shippingCountry, index) in defaultCountries"
+          v-for="(shippingCountry, index) in shippingCountries"
           :key="`shipping-country-${index}`"
           :value="shippingCountry.id.toString()"
         >
@@ -131,7 +133,7 @@
       <ErrorMessage as="span" name="country" class="flex text-negative-700 text-sm mt-2" />
     </label>
 
-    <label class="flex items-center gap-2">
+    <label v-if="!restrictedAddresses" class="flex items-center gap-2">
       <SfCheckbox data-testid="use-shipping-as-billing" v-model="shippingAsBilling" />
       <span class="cursor-pointer select-none">{{ $t('form.useAsBillingLabel') }}</span>
     </label>
@@ -147,13 +149,15 @@ import { type Address, AddressType, userAddressGetters } from '@plentymarkets/sh
 const { address, addAddress = false } = defineProps<AddressFormProps>();
 
 const { isGuest } = useCustomer();
-const { default: defaultCountries } = useAggregatedCountries();
+const { default: shippingCountries } = useAggregatedCountries();
 const { shippingAsBilling } = useShippingAsBilling();
+const { handleCartTotalChanges } = useCartTotalChange();
 const { addresses: shippingAddresses } = useAddressStore(AddressType.Shipping);
 const { addresses: billingAddresses } = useAddressStore(AddressType.Billing);
 const { set: setShippingAddress } = useCheckoutAddress(AddressType.Shipping);
 const { set: setBillingAddress } = useCheckoutAddress(AddressType.Billing);
 const { addressToSave: billingAddressToSave, save: saveBillingAddress } = useAddressForm(AddressType.Billing);
+const { restrictedAddresses } = useRestrictedAddress();
 const {
   hasCompany: hasShippingCompany,
   addressToSave: shippingAddressToSave,
@@ -183,7 +187,7 @@ if (!addAddress) {
 }
 
 const handleSaveShippingAsBilling = async (shippingAddressForm: Address) => {
-  if (shippingAsBilling.value) {
+  if (!restrictedAddresses.value && shippingAsBilling.value) {
     billingAddressToSave.value = isGuest.value
       ? (shippingAddresses.value[0] as Address)
       : (shippingAddressForm as Address);
@@ -213,7 +217,7 @@ const handleShippingPrimaryAddress = async () => {
 };
 
 const handleBillingPrimaryAddress = async () => {
-  if (shippingAsBilling.value && billingAddresses.value.length > 0) {
+  if (!restrictedAddresses.value && shippingAsBilling.value && billingAddresses.value.length > 0) {
     await setBillingAddress(
       addAddress || isGuest.value
         ? (billingAddresses.value[0] as Address)
@@ -240,6 +244,7 @@ const submitForm = handleSubmit((shippingAddressForm) => {
     .then(() => handleShippingPrimaryAddress())
     .then(() => handleBillingPrimaryAddress())
     .then(() => refreshAddressDependencies())
+    .then(() => handleCartTotalChanges())
     .catch((error) => useHandleError(error));
 });
 

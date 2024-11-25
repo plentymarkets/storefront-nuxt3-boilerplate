@@ -19,6 +19,7 @@ export * from './useCartShippingMethods';
 export * from './useCategoryFilter';
 export * from './useCategoryTree';
 export * from './useCookieBar';
+export * from './useCookieConsent';
 export * from './useCoupon';
 export * from './useCsrfToken';
 export * from './useCustomer';

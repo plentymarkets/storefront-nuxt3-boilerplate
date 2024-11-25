@@ -43,11 +43,14 @@ const setInitialDataSSR: SetInitialData = async () => {
   const { setCategoryTree } = useCategoryTree();
   const { setCart, loading: cartLoading } = useCart();
   const { setWishlistItemIds } = useWishlist();
+  const { fetchCategoryTemplate } = useCategoryTemplate();
+  const runtimeConfig = useRuntimeConfig();
 
   cartLoading.value = true;
 
   try {
     const { data } = await useAsyncData(() => useSdk().plentysystems.getInit());
+    await fetchCategoryTemplate(runtimeConfig.public.homepageCategoryId);
     if (data.value?.data) {
       setUser(data.value.data.session as SessionResult);
       setCart(data.value.data.session?.basket as Cart);

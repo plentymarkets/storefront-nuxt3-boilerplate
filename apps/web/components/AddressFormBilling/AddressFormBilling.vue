@@ -115,8 +115,10 @@
         v-model="country"
         v-bind="countryAttributes"
         :placeholder="$t('form.selectPlaceholder')"
-        autocomplete="country-name"
         :invalid="Boolean(errors['country'])"
+        wrapper-class-name="bg-white"
+        class="!ring-1 !ring-neutral-200"
+        autocomplete="country-name"
       >
         <option
           v-for="(billingCountry, index) in billingCountries"

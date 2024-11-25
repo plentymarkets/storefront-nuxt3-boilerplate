@@ -40,6 +40,7 @@ const createHttpClient = () => {
 const handleHttpError = (error: unknown) => {
   const axiosError = error as any;
   const data = axiosError?.response?.data?.data || axiosError?.response?.data;
+  const events = axiosError?.response?.data?.events;
 
   // eslint-disable-next-line etc/throw-error
   throw new ApiError({
@@ -47,6 +48,7 @@ const handleHttpError = (error: unknown) => {
     code: axiosError?.response?.data?.error?.code ?? axiosError?.response?.status ?? axiosError.status,
     message: data?.message ?? axiosError.message ?? '',
     cause: data?.errors ?? {},
+    events: events,
   });
 };
 

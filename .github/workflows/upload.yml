@@ -93,7 +93,7 @@ jobs:
           outPath: pwa.tar.gz
 
       - name: Upload build to production
-        if: github.event_name == 'release'  || (github.event_name == 'workflow_dispatch' && ${{ inputs.environment }} == 'production')
+        if: github.event_name == 'release'  || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production')
         id: upload-production
         uses: JantHsueh/upload-file-action@1.0
         with:
@@ -102,7 +102,7 @@ jobs:
           fileForms: '{ "file": "pwa.tar.gz" }'
 
       - name: Upload build to staging
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && ${{ inputs.environment }} == 'staging')
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
         id: upload-staging
         uses: JantHsueh/upload-file-action@1.0
         with:

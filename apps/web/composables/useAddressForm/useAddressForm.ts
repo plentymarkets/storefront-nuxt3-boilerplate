@@ -10,6 +10,7 @@ export const useAddressForm = (type: AddressType) => {
   const { data: customerData, getSession } = useCustomer();
   const { data: cartData } = useCart();
   const { send } = useNotification();
+  const { restrictedAddresses } = useRestrictedAddress();
 
   const state = useState('useAddressForm' + type, () => ({
     isLoading: false,
@@ -78,6 +79,7 @@ export const useAddressForm = (type: AddressType) => {
 
   const notifyIfShippingChanged = () => {
     if (
+      !restrictedAddresses.value &&
       selectedMethod.value &&
       shippingProviderGetters.getShippingProfileId(cartData.value).toString() !==
         shippingProviderGetters.getParcelServicePresetId(selectedMethod.value)
@@ -88,8 +90,8 @@ export const useAddressForm = (type: AddressType) => {
 
   const notifyIfBillingChanged = () => {
     if (cartData.value.methodOfPaymentId !== customerData.value.basket.methodOfPaymentId) {
-      send({ message: $i18n.t('billing.methodChanged'), type: 'warning' });
       cartData.value.methodOfPaymentId = customerData.value.basket.methodOfPaymentId;
+      if (!restrictedAddresses.value) send({ message: $i18n.t('billing.methodChanged'), type: 'warning' });
     }
   };
 

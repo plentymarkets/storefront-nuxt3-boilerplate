@@ -49,6 +49,11 @@
           "name": "Script demo",
           "provider": "plentysystems AG",
           "status": "Usage example for loading a script after consent."
+        },
+        "payPal": {
+          "name": "paypal",
+          "provider": "PayPal (Europe) S.à r.l. et Cie, S.C.A.",
+          "status": "Required for PayPal payments."
         }
       },
       "description": "These cookies are used to store preferred settings and certain options selected by the user.",
@@ -767,7 +772,9 @@
     "unbrandedCvv": "CVV",
     "unbrandedExpirationDate": "Expiration date",
     "unbrandedNameOnCard": "Name on card",
-    "unbrandedPay": "Pay"
+    "unbrandedPay": "Pay",
+    "cookieNotAccepted": "Please accept our cookies to use PayPal: ",
+    "openSettings": "open cookie settings"
   },
   "perPage": "Per page",
   "phone": "Phone",
@@ -913,6 +920,15 @@
       "validationFailed": "The address is invalid."
     },
     "cart": {
+      "addToBasket": {
+        "itemSetComponentMismatch": "There is a mismatch in the item set components, and it cannot be added to the cart.",
+        "maxItemQuantityReached": "The maximum quantity for this item has been reached and it cannot be added to the cart.",
+        "maxVariationQuantityReached": "The maximum quantity for this variant has been reached and it cannot be added to the cart.",
+        "minVariationQuantityNotReached": "The minimum quantity for this variant has not been reached and cannot be added to the cart.",
+        "notEnoughStockForVariation": "There is insufficient stock available for this variant.",
+        "unknownError": "An unknown error occurred while adding the item. Please try again.",
+        "variationNotFound": "The selected variant was not found and cannot be added to the cart."
+      },
       "failedToRemoveItem": "The item could not be removed.",
       "reachedMaximumQuantity": "Your order exceeds the maximum order quantity of this item."
     },

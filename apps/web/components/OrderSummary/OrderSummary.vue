@@ -65,7 +65,7 @@
         <h2 data-testid="total-label">{{ t('total') }}</h2>
         <h2 data-testid="total">{{ n(totals.total, 'currency') }}</h2>
       </div>
-      <UiDivider class="w-auto" />
+      <UiDivider class="w-auto mb-4" />
       <slot />
     </div>
   </div>

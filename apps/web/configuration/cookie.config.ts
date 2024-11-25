@@ -21,6 +21,12 @@ export interface CookieGroupFromNuxtConfig {
   barDescription: string;
 }
 
+export type JsonCookie = {
+  [groupName: string]: {
+    [cookieName: string]: boolean;
+  };
+};
+
 export default {
   barTitle: 'CookieBar.about.label',
   barDescription: 'CookieBar.about.description',
@@ -87,6 +93,13 @@ export default {
           PrivacyPolicy: '/PrivacyPolicy',
           Lifespan: 'Session',
           script: ['https://cdn02.plentymarkets.com/mevofvd5omld/frontend/test-cookie-external-script.js'],
+        },
+        {
+          name: 'CookieBar.functional.cookies.payPal.name',
+          Provider: 'CookieBar.functional.cookies.payPal.provider',
+          Status: 'CookieBar.functional.cookies.payPal.status',
+          PrivacyPolicy: '/PrivacyPolicy',
+          Lifespan: 'Session',
         },
       ],
     },

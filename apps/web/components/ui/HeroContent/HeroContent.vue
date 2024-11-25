@@ -2,9 +2,9 @@
   <div class="md:flex md:flex-row-reverse md:justify-center mx-auto mb-10 text-center">
     <div class="flex flex-col md:basis-2/4 md:items-stretch md:overflow-hidden">
       <img
-        :src="heroItemProps.image"
-        :width="heroItemProps.backgroundSizes && heroItemProps.backgroundSizes[currentSizeKey].width"
-        :height="heroItemProps.backgroundSizes && heroItemProps.backgroundSizes[currentSizeKey].height"
+        :src="currentImageSource"
+        :width="currentImageSize.width"
+        :height="currentImageSize.height"
         :alt="heroItemProps.alt"
         class="h-full m-auto md:h-full md:object-contain"
       />
@@ -39,14 +39,31 @@
 </template>
 
 <script setup lang="ts">
-import { HeroContentProps, SizeKey } from '../HeroCarousel/types';
+import { HeroContentProps, SizeKey, Sizes } from '../HeroCarousel/types';
 
+const backgroundSizes: Sizes = {
+  lg: { width: '4000', height: '600' },
+  md: { width: '1024', height: '600' },
+  sm: { width: '640', height: '752' },
+  xs: { width: '250', height: '250' },
+};
+const isSizeKeyRecord = (image: HeroContentProps['image']): image is Record<SizeKey, string> => {
+  const sizeKeys = Object.keys(backgroundSizes);
+  return image !== undefined && typeof image === 'object' && sizeKeys.every((key) => key in image);
+};
 const props = defineProps<{
   heroItemProps: HeroContentProps;
-  currentSizeKey: SizeKey;
 }>();
 
 const localePath = useLocalePath();
 
 const NuxtLink = resolveComponent('NuxtLink');
+const viewport = useViewport();
+
+const currentSizeKey = computed(() => viewport.breakpoint.value as SizeKey);
+
+const currentImageSize = computed(() => backgroundSizes[currentSizeKey.value]);
+const currentImageSource = computed<string | undefined>(() => {
+  return isSizeKeyRecord(props.heroItemProps.image) ? props.heroItemProps.image[currentSizeKey.value] : undefined;
+});
 </script>

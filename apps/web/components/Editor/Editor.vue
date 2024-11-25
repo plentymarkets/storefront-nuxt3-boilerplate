@@ -16,6 +16,7 @@
         :placeholder="$t('editMode.editJsonPlaceholder')"
       ></textarea>
     </div>
+    <div v-if="errorMessage" class="text-red-500 mt-2 text-sm">{{ errorMessage }}</div>
     <UiButton @click="formatJson" class="mt-4 px-4 py-2 text-white rounded-md bg-blue-500 hover:bg-blue-600">
       {{ $t('editMode.formatJson') }}
     </UiButton>
@@ -25,33 +26,11 @@
     <UiButton @click="clearText" class="mt-4 ml-2 px-4 py-2 text-white rounded-md bg-red-500 hover:bg-red-600">
       {{ $t('editMode.clearJson') }}
     </UiButton>
-    <div v-if="errorMessage" class="text-red-500 mt-2 text-sm">{{ errorMessage }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { heroData } from './heroData';
-import { mediaData } from './mediaData';
-
-const initialJson = JSON.stringify(
-  {
-    id: 22,
-    hero: heroData,
-    valueProposition: mediaData,
-    featured: [
-      {
-        headline: '',
-        categoryId: 1,
-      },
-      {
-        headline: '',
-        categoryId: 2,
-      },
-    ],
-  },
-  null,
-  2,
-);
+const { data } = useHomepage();
 
 const {
   jsonText,
@@ -64,5 +43,13 @@ const {
   formatJson,
   purgeJson,
   clearText,
-} = useJsonEditor(initialJson);
+} = useJsonEditor(JSON.stringify(data, null, 2));
+
+watch(
+  () => data,
+  (updatedData) => {
+    jsonText.value = JSON.stringify(updatedData.value, null, 2);
+  },
+  { immediate: true, deep: true },
+);
 </script>
