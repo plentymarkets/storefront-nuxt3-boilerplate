@@ -1,6 +1,6 @@
 <template>
   <div class="my-5">
-    <UiButton> My Modules Test button </UiButton>
+    <UiButton> My Modules Test button</UiButton>
   </div>
 </template>
 <script setup lang="ts">

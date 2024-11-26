@@ -27,6 +27,7 @@ export * from './useCustomerContact';
 export * from './useCustomerOrder';
 export * from './useCustomerOrders';
 export * from './useCustomerReturns';
+export * from './useExtendCheckout';
 export * from './useHandleError';
 export * from './useInitialSetup';
 export * from './useLegalInformation';

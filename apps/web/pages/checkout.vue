@@ -84,7 +84,7 @@
               </template>
               <template v-else>{{ t('buy') }}</template>
             </UiButton>
-            <component v-for="paymentComponent in paymentComponents" :is="paymentComponent"></component>
+            <component v-for="afterBuyComponent in afterBuy" :is="afterBuyComponent"></component>
           </OrderSummary>
         </div>
       </div>
@@ -120,8 +120,8 @@ definePageMeta({
   middleware: ['reject-empty-checkout'],
 });
 
-const paymentComponents = useState('payment-components');
-console.log(paymentComponents.value);
+const { data: afterBuy} = useExtendCheckout('checkout:after:buy');
+console.log(afterBuy.value);
 
 const { send } = useNotification();
 const { t } = useI18n();
