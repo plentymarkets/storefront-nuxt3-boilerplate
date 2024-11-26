@@ -12,6 +12,6 @@ export default defineNuxtModule({
             path: resolver.resolve("components"),
         }));
         addImportsDir(resolver.resolve('composables'));
-        addPlugin(resolver.resolve('plugins/injectTestComponent.ts'));
+        addPlugin(resolver.resolve('plugins/registerComponents.ts'));
     }
 });

@@ -84,7 +84,7 @@
               </template>
               <template v-else>{{ t('buy') }}</template>
             </UiButton>
-            <div id="paypal-button-container"></div>
+            <component v-for="paymentComponent in paymentComponents" :is="paymentComponent"></component>
           </OrderSummary>
         </div>
       </div>
@@ -119,6 +119,9 @@ definePageMeta({
   pageType: 'static',
   middleware: ['reject-empty-checkout'],
 });
+
+const paymentComponents = useState('payment-components');
+console.log(paymentComponents.value);
 
 const { send } = useNotification();
 const { t } = useI18n();

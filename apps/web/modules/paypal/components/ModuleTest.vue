@@ -4,17 +4,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useNuxtApp } from '#app';
-import { useCsrfToken } from '~/composables/useCsrfToken/useCsrfToken';
 
 if (import.meta.client) {
   try {
-    const test = useState('useCart');
-    console.log(test.value);
-    /* const nuxtApp = useNuxtApp();
-    console.log('Module Test');
-    const { token } = useCsrfToken();
-    console.log(token.value); */
+    const { data: cart } = useCart();
+    console.log('cart', cart.value);
+    
   } catch (error) {
     console.error(error);
   }
