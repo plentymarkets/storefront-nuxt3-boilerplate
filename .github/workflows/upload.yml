@@ -65,6 +65,7 @@ jobs:
           touch apps/web/.env
           cat <<EOT >> apps/web/.env
           API_URL=${{ vars.API_URL }}
+          API_ENDPOINT=${{ vars.API_URL}}
           API_SECURITY_TOKEN=${{ secrets.API_SECURITY_TOKEN }}
           ${{ vars.CONFIG }}
           EOT

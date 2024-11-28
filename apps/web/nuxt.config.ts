@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { validateApiUrl } from './utils/pathHelper';
+import { removeTrailingSlash } from './utils/pathHelper';
 import cookieConfig from './configuration/cookie.config';
 import { nuxtI18nOptions } from './configuration/i18n.config';
 import { appConfiguration } from './configuration/app.config';
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   pages: true,
   runtimeConfig: {
     public: {
-      domain: validateApiUrl(process.env.API_URL) ?? process.env.API_ENDPOINT,
+      domain: removeTrailingSlash(process.env.API_ENDPOINT),
       apiEndpoint: process.env.API_ENDPOINT,
       cookieGroups: cookieConfig,
       showNetPrices: true,
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
   ],
   vsf: {
     middleware: {
-      apiUrl: validateApiUrl(process.env.API_URL) ?? 'http://localhost:8181',
+      apiUrl: removeTrailingSlash(process.env.API_URL) ?? 'http://localhost:8181',
     },
   },
   image: {

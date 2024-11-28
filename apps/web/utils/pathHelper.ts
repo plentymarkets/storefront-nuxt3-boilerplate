@@ -1,3 +1,3 @@
-export const validateApiUrl = (url: string | undefined): string | undefined => {
+export const removeTrailingSlash = (url: string | undefined): string | undefined => {
   return url?.replace(/[/\\]+$/, '');
 };
