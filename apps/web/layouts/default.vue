@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModuleTest />
     <UiToolbar v-if="isPreview" />
     <UiHeader />
     <NarrowContainer v-if="breadcrumbs?.length" class="p-4 md:px-0">

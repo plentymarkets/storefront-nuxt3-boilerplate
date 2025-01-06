@@ -67,6 +67,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    '@plentymarkets/pwa-module-boilerplate',
     '@nuxt/image',
     '@nuxt/test-utils/module',
     '@nuxtjs/google-fonts',

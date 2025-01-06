@@ -97,6 +97,7 @@ import { productGetters } from '@plentymarkets/shop-api';
 import { SfLink, SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
 import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import { defaults } from '~/composables';
+import EventBus from '~/utils/EventBus';
 
 const localePath = useLocalePath();
 const { t, n } = useI18n();
@@ -147,6 +148,7 @@ const getHeight = () => {
 
 const addWithLoader = async (productId: number, quickCheckout = true) => {
   loading.value = true;
+  EventBus.emit('addCount', 100);
 
   try {
     await addToCart({
