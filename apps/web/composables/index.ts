@@ -44,7 +44,6 @@ export * from './useProduct';
 export * from './useProductAttributes';
 export * from './useProductOrderProperties';
 export * from './useProductRecommended';
-export * from './useProductReviewAverage';
 export * from './useProductReviews';
 export * from './useProducts';
 export * from './useQuickCheckout';
