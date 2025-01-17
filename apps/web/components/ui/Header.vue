@@ -35,7 +35,7 @@
           class="group relative text-white hover:text-white active:text-white hover:bg-primary-800 active:bg-primary-700 mr-1 -ml-0.5 rounded-md"
           :tag="NuxtLink"
           :to="localePath(paths.wishlist)"
-          :aria-label="t('numberInWishlist', { count: wishlistItemIds.length })"
+          :aria-label="t('numberInWishlist', { count: Object.keys(wishlistItemIds).length })"
           variant="tertiary"
           square
           data-testid="wishlist-page-navigation"
@@ -43,7 +43,7 @@
           <template #prefix>
             <SfIconFavorite />
             <SfBadge
-              :content="wishlistItemIds.length"
+              :content="Object.keys(wishlistItemIds).length"
               class="outline outline-primary-500 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-700 flex justify-center items-center text-xs min-w-[16px] min-h-[16px]"
               data-testid="wishlist-badge"
               placement="top-right"

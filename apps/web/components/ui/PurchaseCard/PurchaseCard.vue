@@ -8,24 +8,26 @@
       <div class="drift-zoom-image">
         <section class="p-4 xl:p-6">
           <div class="grid grid-cols-[2fr_1fr] mt-4">
-            <h1 class="font-bold typography-headline-4" data-testid="product-name">
-              {{ productGetters.getName(product) }}
-            </h1>
-            <div class="flex items-center justify-center">
-              <WishlistButton
-                :product="product"
-                :quantity="quantitySelectorValue"
-                :square="viewport.isLessThan('lg')"
-                :class="{
-                  'bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full':
-                    viewport.isLessThan('lg'),
-                }"
-              >
-                <template v-if="viewport.isGreaterOrEquals('lg')">
-                  {{
-                    !isWishlistItem(productGetters.getVariationId(product))
-                      ? t('addToWishlist')
-                      : t('removeFromWishlist')
+      <h1 class="font-bold typography-headline-4" data-testid="product-name">
+        {{ productGetters.getName(product) }}
+      </h1>
+      <div class="flex items-center justify-center">
+        <WishlistButton
+          :product="product"
+          :quantity="quantitySelectorValue"
+          :square="viewport.isLessThan('lg')"
+          :class="{
+            'bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full':
+              viewport.isLessThan('lg'),
+          }"
+          :is-truly-in-wishlist="!productCanBeAddedToWishlist(product)"
+        >
+          <template v-if="viewport.isGreaterOrEquals('lg')">
+            {{
+              !isWishlistItem(productGetters.getVariationId(product)) || productCanBeAddedToWishlist(product)
+                ? t('addToWishlist')
+                : t('removeFromWishlist')
+
                   }}
                 </template>
               </WishlistButton>
@@ -163,7 +165,7 @@ const { clear, send } = useNotification();
 const { addToCart, loading } = useCart();
 const { t } = useI18n();
 const quantitySelectorValue = ref(productGetters.getMinimumOrderQuantity(product));
-const { isWishlistItem } = useWishlist();
+const { isWishlistItem, productCanBeAddedToWishlist } = useWishlist();
 const { openQuickCheckout } = useQuickCheckout();
 const { crossedPrice } = useProductPrice(product);
 const { reviewArea } = useProductReviews(Number(productGetters.getId(product)));

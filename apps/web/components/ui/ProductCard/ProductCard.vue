@@ -34,6 +34,10 @@
           square
           class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
           :product="product"
+          :is-truly-in-wishlist="
+            productGetters.canBeAddedToCartFromCategoryPage(product) ===
+            canBeDirectlyAddedToCart(productGetters.getVariationId(product))
+          "
         />
       </slot>
     </div>
@@ -70,7 +74,11 @@
         </span>
       </div>
       <UiButton
-        v-if="productGetters.canBeAddedToCartFromCategoryPage(product)"
+        v-if="
+          isFromWishlist
+            ? wishlistGetters.canDirectlyAddToCart(product)
+            : productGetters.canBeAddedToCartFromCategoryPage(product)
+        "
         size="sm"
         class="min-w-[80px] w-fit"
         data-testid="add-to-basket-short"
@@ -93,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { productGetters } from '@plentymarkets/shop-api';
+import { productGetters, wishlistGetters } from '@plentymarkets/shop-api';
 import { SfLink, SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
 import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import { defaults } from '~/composables';
@@ -124,6 +132,8 @@ const { data: categoryTree } = useCategoryTree();
 const { openQuickCheckout } = useQuickCheckout();
 const { addToCart } = useCart();
 const { price, crossedPrice } = useProductPrice(product);
+const { canBeDirectlyAddedToCart } = useWishlist();
+
 const { send } = useNotification();
 const loading = ref(false);
 

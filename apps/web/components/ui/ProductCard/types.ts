@@ -1,7 +1,7 @@
-import type { Product } from '@plentymarkets/shop-api';
+import type { Product, WishlistItem } from '@plentymarkets/shop-api';
 
 export type ProductCardProps = {
-  product: Product;
+  product: Product | WishlistItem;
   name: string;
   imageUrl: string;
   imageAlt?: string;

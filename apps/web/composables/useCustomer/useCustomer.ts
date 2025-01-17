@@ -1,4 +1,10 @@
-import type { RegisterParams, SessionResult, UserChangePasswordParams, ApiError } from '@plentymarkets/shop-api';
+import type {
+  RegisterParams,
+  SessionResult,
+  UserChangePasswordParams,
+  WishlistVariation,
+  ApiError
+} from '@plentymarkets/shop-api';
 import type {
   UseCustomerReturn,
   UseCustomerState,
@@ -63,7 +69,7 @@ export const useCustomer: UseCustomerReturn = () => {
     useHandleError(error.value);
     state.value.data = data?.value?.data ?? state.value.data;
     checkUserState();
-    useWishlist().setWishlistItemIds(Object.keys(state.value.data?.basket?.itemWishListIds || []));
+    useWishlist().setWishlistItemIds(Object.keys(state.value.data?.basket?.itemWishListIds || ({} as WishlistVariation)));
 
     state.value.loading = false;
     return state.value.data;
@@ -140,7 +146,7 @@ export const useCustomer: UseCustomerReturn = () => {
 
     state.value.data.user = null;
     checkUserState();
-    useWishlist().setWishlistItemIds([]);
+    useWishlist().setWishlistItemIds({} as WishlistVariation);
   };
 
   /** Function for registering a user.

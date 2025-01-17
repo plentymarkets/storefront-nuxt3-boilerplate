@@ -4,4 +4,5 @@ export type WishlistButtonProps = {
   product: Product;
   quantity?: number;
   discard?: boolean;
+  isTrulyInWishlist?: boolean;
 };
