@@ -17639,6 +17639,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nuxt-vitalizer@npm:0.10.0":
+  version: 0.10.0
+  resolution: "nuxt-vitalizer@npm:0.10.0"
+  dependencies:
+    "@nuxt/kit": "npm:^3.12.2"
+    defu: "npm:^6.1.4"
+    knitwork: "npm:^1.1.0"
+  checksum: 10c0/228ea512010178291837d4f98f8d124cdf22068fba65982a4b47b21cdd4aa1fa46ef74777853723633476ed5b0309468b02af350bb42c0b189c91d4d38c22d1d
+  languageName: node
+  linkType: hard
+
 "nuxt@npm:^3.13.2":
   version: 3.13.2
   resolution: "nuxt@npm:3.13.2"
@@ -23534,6 +23545,7 @@ __metadata:
     msw: "npm:^2.6.7"
     nuxt: "npm:^3.13.2"
     nuxt-lazy-hydrate: "npm:^1.0.0"
+    nuxt-vitalizer: "npm:0.10.0"
     sass: "npm:^1.77.6"
     tsx: "npm:^4.19.0"
     typedoc: "npm:^0.26.2"
