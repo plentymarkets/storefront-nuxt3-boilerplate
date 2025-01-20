@@ -8,23 +8,26 @@
       @update="updateBlock"
     />
     <div v-else class="content">
-      <template v-for="(block, index) in data.blocks" :key="index">
-        <PageBlock
-          :index="index"
-          :block="block"
-          :is-preview="isPreview"
-          :disable-actions="disableActions"
-          :is-clicked="isClicked"
-          :clicked-block-index="clickedBlockIndex"
-          :is-tablet="isTablet"
-          :block-has-data="blockHasData"
-          :get-component="getComponent"
-          :tablet-edit="tabletEdit"
-          :add-new-block="addNewBlock"
-          :handle-edit="handleEdit"
-          :delete-block="deleteBlock"
-        />
-      </template>
+      <h1 class="font-bold m-8">Nuxt Vitalizer</h1>
+      <DelayHydration>
+        <template v-for="(block, index) in data.blocks" :key="index">
+          <PageBlock
+            :index="index"
+            :block="block"
+            :is-preview="isPreview"
+            :disable-actions="disableActions"
+            :is-clicked="isClicked"
+            :clicked-block-index="clickedBlockIndex"
+            :is-tablet="isTablet"
+            :block-has-data="blockHasData"
+            :get-component="getComponent"
+            :tablet-edit="tabletEdit"
+            :add-new-block="addNewBlock"
+            :handle-edit="handleEdit"
+            :delete-block="deleteBlock"
+          />
+        </template>
+      </DelayHydration>
     </div>
   </div>
 </template>
