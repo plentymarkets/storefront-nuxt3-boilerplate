@@ -154,7 +154,7 @@ const handleGuestUserInit = async () => {
 
     if (billingAddresses.value.length === 0) await navigateTo(localePath(paths.cart));
     if (shippingAddresses.value.length === 0) await saveShippingAddress(billingAddresses.value[0], true);
-
+    await setInitialCartTotal();
     await setClientCheckoutAddress();
     await fetchShippingAndPaymentMethods();
   } catch (error) {
