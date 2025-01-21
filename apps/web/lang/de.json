@@ -1003,5 +1003,20 @@
     "delete": "Der Artikel wurde von der Wunschliste entfernt."
   },
   "youAreOfflineText": "Es scheint, dass Sie derzeit offline sind, überprüfen Sie Ihre Internetverbindung",
-  "double-tap-zoom": "Zum Zoomen doppeltippen"
+  "double-tap-zoom": "Zum Zoomen doppeltippen",
+  "siteConfiguration": {
+    "settings": "TBD",
+    "fonts": "TBD",
+    "colors": "TBD",
+    "blocksSpacing": "TBD",
+    "primary": "TBD",
+    "secondary": "TBD",
+    "chooseFont": "TBD",
+    "choosePrimaryColor": "TBD",
+    "chooseSecondaryColor": "TBD",
+    "fontTooltip": "TBD",
+    "primaryTooltip": "TBD",
+    "secondaryTooltip": "TBD",
+    "spacingBetweenBlocks": "TBD"
+  }
 }

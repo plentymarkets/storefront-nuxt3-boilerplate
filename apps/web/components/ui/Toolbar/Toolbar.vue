@@ -1,7 +1,18 @@
 <template>
-  <div class="sticky top-0 bg-white z-[1] md:z-[10] lg:z-[100]" data-testid="edit-mode-toolbar">
+  <div class="sticky top-0 bg-white z-[1] md:z-[10] lg:z-[160] mb-3" data-testid="edit-mode-toolbar">
     <div class="relative flex items-center pr-5">
       <UiBrandLogo />
+
+      <UiButton
+        type="button"
+        class="relative ml-4"
+        variant="tertiary"
+        :aria-label="$t('openConfigurationDrawer')"
+        square
+        @click="drawerOpen = !drawerOpen"
+      >
+        <SfIconTune />
+      </UiButton>
 
       <div class="absolute left-1/2 transform -translate-x-1/2">
         <UiLanguageEditor />
@@ -45,17 +56,17 @@
       </div>
     </div>
   </div>
-  <div class="bg-[#F1F3F5] py-1" />
 </template>
 
 <script setup lang="ts">
-import { SfLoaderCircular, SfIconBase, SfIconVisibility } from '@storefront-ui/vue';
+import { SfLoaderCircular, SfIconBase, SfIconVisibility, SfIconTune } from '@storefront-ui/vue';
 import { editPath } from 'assets/icons/paths/edit';
 import { savePath } from '~/assets/icons/paths/save';
 const runtimeConfig = useRuntimeConfig();
 const { isEditing, isEditingEnabled, disableActions } = useEditor();
 
 const { loading } = useHomepage();
+const { drawerOpen } = useSiteConfiguration();
 const { updatePageTemplate } = useUpdatePageTemplate();
 
 const homepageCategoryId = runtimeConfig.public.homepageCategoryId;

@@ -1003,5 +1003,20 @@
     "delete": "The item was removed from your wish list."
   },
   "youAreOfflineText": "It seems you are currently offline, check your internet connection",
-  "double-tap-zoom": "Double-tap to zoom"
+  "double-tap-zoom": "Double-tap to zoom",
+  "siteConfiguration": {
+    "settings": "Settings",
+    "fonts": "Fonts",
+    "colors": "Colors",
+    "blocksSpacing": "Blocks spacing",
+    "primary": "Primary color",
+    "secondary": "Secondary color",
+    "chooseFont": "Choose Google font for all texts",
+    "choosePrimaryColor": "Choose primary color",
+    "chooseSecondaryColor": "Choose secondary color",
+    "fontTooltip": "The shop supports Google Fonts. Fonts are downloaded during the build process. This means the shop does not connect to Google while the shop is running.",
+    "primaryTooltip": "The shop uses a primary and secondary color palette. Each palette consists of ten shades. The colors configured here serve as the base value for the respective palette. All other shades are automatically generated during the build process.",
+    "secondaryTooltip": "The shop uses a primary and secondary color palette. Each palette consists of ten shades. The colors configured here serve as the base value for the respective palette. All other shades are automatically generated during the build process.",
+    "spacingBetweenBlocks": "Spacing between blocks: {count}px"
+  }
 }
