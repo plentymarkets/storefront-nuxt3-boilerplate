@@ -257,13 +257,6 @@
       "emailAlreadyExists": "This email address is already registered.",
       "heading": "Create an account",
       "logInLinkLabel": "Log in instead",
-      "modal": {
-        "button": "Go Shopping",
-        "description": "Your account has been created. You can {information} to your account now, so you do not have to do this later during your purchase.",
-        "heading": "Welcome",
-        "imageAlt": "Image to confirm successful signup",
-        "information": "add information"
-      },
       "passwordValidation": {
         "characters": "The password must contain at least 8 characters.",
         "letters": "The password must contain at least one letter.",
@@ -549,7 +542,6 @@
     "firstNameLabel": "First Name",
     "lastNameLabel": "Last Name",
     "optional": "optional",
-    "passwordHint": "8 or more characters with a mix of letters, numbers and symbols.",
     "passwordLabel": "Password",
     "phoneLabel": "Phone",
     "postalCodeLabel": "Zip Code",
@@ -561,8 +553,6 @@
     "stateLabel": "State",
     "streetNameLabel": "Street",
     "streetNumberLabel": "Number",
-    "subscriptionLabel": "I wish to receive occasional emails about special offers, new products and exclusive promotions. I can cancel my subscription at any time. (Optional)",
-    "termsAndConditionsLabel": "I declare that I have read and accept the {terms}",
     "useAsBillingLabel": "Use as billing address",
     "useAsShippingLabel": "Use as shipping address",
     "vatIdLabel": "VAT ID"
