@@ -48,13 +48,14 @@ const {
 
 const { data, initialBlocks, fetchPageTemplate, dataIsEmpty } = useHomepage();
 const { $i18n } = useNuxtApp();
-const { isEditing, isEditingEnabled, disableActions } = useEditor();
+const { isEditing, isEditingEnabled, disableActions, displayBlockList } = useEditor();
 
 const defaultAddBlock = (lang: string) => {
   return lang === 'en' ? homepageTemplateDataEn.blocks[1] : homepageTemplateDataDe.blocks[1];
 };
 
 const addNewBlock = (index: number, position: number) => {
+  displayBlockList.value = true;
   const insertIndex = position === -1 ? index : index + 1;
   const updatedBlocks = [...data.value.blocks];
 
