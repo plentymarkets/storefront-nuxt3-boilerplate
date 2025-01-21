@@ -65,6 +65,7 @@
     "is-ci": "^3.0.1",
     "lint-staged": "^14.0.1",
     "nuxt": "^3.13.2",
+    "nuxt-security": "2.1.5",
     "nuxt-viewport": "^2.1.5",
     "playwright-core": "^1.45.1",
     "prettier": "^3.3.2",
