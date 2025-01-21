@@ -3617,13 +3617,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/core@npm:^9.8.0":
-  version: 9.13.1
-  resolution: "@intlify/core@npm:9.13.1"
+"@intlify/core-base@npm:9.14.2":
+  version: 9.14.2
+  resolution: "@intlify/core-base@npm:9.14.2"
   dependencies:
-    "@intlify/core-base": "npm:9.13.1"
-    "@intlify/shared": "npm:9.13.1"
-  checksum: 10c0/1ba364ca1d26c72d307f65f5fa38cefd212b568cfca98f1cf242a8efacbc3fac278b11a3d325ec3f7eeddc42326510d19ca75392bdb052ad704dab470309658c
+    "@intlify/message-compiler": "npm:9.14.2"
+    "@intlify/shared": "npm:9.14.2"
+  checksum: 10c0/e70aa32fcff98f0c3e42dead194efb4c6545cb75778cd060d7b2b7232140f8937ba69dcdea63f4e3afa857ae74b1fc93880ccc597556c0f72a3d3b2b77f47612
+  languageName: node
+  linkType: hard
+
+"@intlify/core@npm:^9.8.0":
+  version: 9.14.2
+  resolution: "@intlify/core@npm:9.14.2"
+  dependencies:
+    "@intlify/core-base": "npm:9.14.2"
+    "@intlify/shared": "npm:9.14.2"
+  checksum: 10c0/07f8176c456090422fa99865ab0c9c338acdfb4678778001f7ac56be310a00c04ecceb681010e372563df0f283d11a72e4a26d3238e5e840f7919245ab525100
   languageName: node
   linkType: hard
 
@@ -3647,10 +3657,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@intlify/message-compiler@npm:9.14.2":
+  version: 9.14.2
+  resolution: "@intlify/message-compiler@npm:9.14.2"
+  dependencies:
+    "@intlify/shared": "npm:9.14.2"
+    source-map-js: "npm:^1.0.2"
+  checksum: 10c0/9b82198011264b231ca75b27c7aa76357bcef74769e2dcdb38c2f7955e2b77e008f96619eddddeae7f8cc0cff57839c67333a2551155f8d3e81c77d267e4d6c1
+  languageName: node
+  linkType: hard
+
 "@intlify/shared@npm:9.13.1, @intlify/shared@npm:^9.4.0, @intlify/shared@npm:^9.9.0":
   version: 9.13.1
   resolution: "@intlify/shared@npm:9.13.1"
   checksum: 10c0/ffd9255c0702e71b712cabfe523b8a2db250b205d31740290ece3577832bddfce4af7c7bda20212fe662ba701e1a045e49adb7b76b0a52c9e60db1a7c0bd1df2
+  languageName: node
+  linkType: hard
+
+"@intlify/shared@npm:9.14.2":
+  version: 9.14.2
+  resolution: "@intlify/shared@npm:9.14.2"
+  checksum: 10c0/98f7a836c6944e0981067a97e6b10c411732826629b8d99d3c94688c5ea340417b034ae2a7a0431f5fe6edac0d36b47a30622ba4d7d88ed167f39e9797771bf0
   languageName: node
   linkType: hard
 
