@@ -15,6 +15,7 @@
 
 ### 🩹 Fixed
 
+- Fixed an issue where deleting the checkout address as a guest triggered an unknown error.
 - Added e2e tests for product manufacturer details tab.
 - Fixed an issue where required attributes notification was blocking the cart.
 - Fixed a visual inconsistency in the category filters sidebar.
