@@ -2,13 +2,7 @@ nodeLinker: node-modules
 
 npmScopes:
   plentymarkets:
-    npmAuthToken: '<TOKEN>'
-    npmRegistryServer: 'https://npm.pkg.github.com'
+    npmAlwaysAuth: false
+    npmRegistryServer: 'https://registry.npmjs.org'
 
-# used for upgrading packages, terminal comand:
-# yarn upgrade-interactive
-plugins:
-  - path: .yarn/plugins/@yarnpkg/plugin-interactive-tools.cjs
-    spec: '@yarnpkg/plugin-interactive-tools'
-
-yarnPath: .yarn/releases/yarn-3.6.4.cjs
+yarnPath: .yarn/releases/yarn-4.5.3.cjs

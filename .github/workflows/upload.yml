@@ -34,8 +34,6 @@ jobs:
 
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         run: |

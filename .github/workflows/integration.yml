@@ -65,8 +65,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run prettier
         run: yarn format
@@ -79,8 +77,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Unit tests
         run: yarn test:coverage
@@ -90,8 +86,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment
@@ -121,8 +115,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment
@@ -161,8 +153,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment
@@ -201,8 +191,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment
@@ -238,8 +226,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment
@@ -265,8 +251,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Yarn
         uses: ./.github/actions/setup
-        with:
-          npm-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup environment
         uses: ./.github/actions/environment

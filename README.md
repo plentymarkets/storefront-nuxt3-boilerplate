@@ -52,7 +52,6 @@ Create an environment file under `apps/web/.env`. The minimum required configura
 ```properties
 # apps/web/.env
 
-NPM_AUTH_TOKEN=
 API_ENDPOINT=
 API_SECURITY_TOKEN=
 ```

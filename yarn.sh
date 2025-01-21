@@ -61,21 +61,6 @@ delete_yarnrc
 yarn set version stable
 yarn set version 4.5.3 --yarn-path
 yarn config set nodeLinker node-modules
-yarn config set npmScopes.plentymarkets.npmRegistryServer "https://npm.pkg.github.com"
-yarn config set npmScopes.plentymarkets.npmAlwaysAuth true
-
-if [ -n "$GITHUB_ACTIONS" ]; then
-  if [ -z "$NPM_AUTH_TOKEN" ]; then
-    echo -e "${RED}NPM_AUTH_TOKEN is not set in the GitHub Actions environment ${SET}"
-    exit 1
-  fi
-  yarn config set npmScopes.plentymarkets.npmAuthToken $NPM_AUTH_TOKEN
-elif grep -q "NPM_AUTH_TOKEN" ./apps/web/.env; then
-  export $(grep "NPM_AUTH_TOKEN" ./apps/web/.env | xargs)
-  yarn config set npmScopes.plentymarkets.npmAuthToken $NPM_AUTH_TOKEN
-else
-  echo -e "${RED} NPM_AUTH_TOKEN not found in ./apps/web/.env ${SET}"
-  exit 1
-fi
-
+yarn config set npmScopes.plentymarkets.npmRegistryServer "https://registry.npmjs.org"
+yarn config set npmScopes.plentymarkets.npmAlwaysAuth false
 yarn
