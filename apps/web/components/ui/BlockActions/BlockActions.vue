@@ -65,7 +65,7 @@ const { openDrawerWithView } = useSiteConfiguration();
 
 const triggerEdit = () => {
   if (useRuntimeConfig().public.experimentalBlockEditForm) {
-    openDrawerWithView('blocksSettings', props.blocks.name);
+    openDrawerWithView('blocksSettings', props.blocks.name, props.index);
   } else {
     emit('edit', props.index);
   }

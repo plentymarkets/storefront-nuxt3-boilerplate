@@ -15,6 +15,9 @@ export const blocksLists: BlocksList = {
           en: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
@@ -22,6 +25,7 @@ export const blocksLists: BlocksList = {
                   },
 
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -37,7 +41,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text that supports HTML formatting',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -47,6 +51,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -62,7 +67,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text that supports HTML formatting',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -77,12 +82,16 @@ export const blocksLists: BlocksList = {
           de: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
                     color: '#fff',
                   },
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -99,7 +108,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text mit HTML-Formatierung',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -109,6 +118,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -124,7 +134,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text mit HTML-Formatierung',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -144,6 +154,9 @@ export const blocksLists: BlocksList = {
           en: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
@@ -151,6 +164,7 @@ export const blocksLists: BlocksList = {
                   },
 
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -176,6 +190,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -206,12 +221,16 @@ export const blocksLists: BlocksList = {
           de: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
                     color: '#fff',
                   },
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -228,7 +247,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text mit HTML-Formatierung',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -238,6 +257,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -253,7 +273,7 @@ export const blocksLists: BlocksList = {
                     htmlDescription: 'Text mit HTML-Formatierung',
                     textAlignment: 'left',
                     justify: 'top',
-                    align: 'start',
+                    align: 'left',
                   },
                   button: {
                     label: 'Button',
@@ -273,6 +293,9 @@ export const blocksLists: BlocksList = {
           en: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
@@ -280,6 +303,7 @@ export const blocksLists: BlocksList = {
                   },
 
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -305,6 +329,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -335,12 +360,16 @@ export const blocksLists: BlocksList = {
           de: {
             name: 'UiCarousel',
             options: {
+              controls: {
+                color: '#fff',
+              },
               bannerItems: [
                 {
                   controls: {
                     color: '#fff',
                   },
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -367,6 +396,7 @@ export const blocksLists: BlocksList = {
                 },
                 {
                   image: {
+                    wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                     mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -421,6 +451,7 @@ export const blocksLists: BlocksList = {
                 variant: 'primary',
               },
               image: {
+                wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -445,6 +476,7 @@ export const blocksLists: BlocksList = {
                 variant: 'primary',
               },
               image: {
+                wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -474,6 +506,7 @@ export const blocksLists: BlocksList = {
                 variant: 'primary',
               },
               image: {
+                wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
@@ -498,6 +531,7 @@ export const blocksLists: BlocksList = {
                 variant: 'primary',
               },
               image: {
+                wideScreen: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 desktop: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 tablet: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
                 mobile: 'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',

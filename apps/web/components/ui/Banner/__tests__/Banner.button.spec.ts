@@ -13,6 +13,9 @@ describe('Banner button', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -32,6 +35,8 @@ describe('Banner button', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
           button: {
             link: '/test-link',
           },
@@ -54,6 +59,8 @@ describe('Banner button', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
           button: {
             label: 'Test button',
           },
@@ -76,6 +83,8 @@ describe('Banner button', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
           button: {
             label: 'Test button',
             link: '/test-link',

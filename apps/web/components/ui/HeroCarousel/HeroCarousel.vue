@@ -33,7 +33,7 @@
           :key="'dot-' + index"
           class="swiper-pagination-bullet"
           :style="{
-            backgroundColor: generalTextColor + ' !important',
+            backgroundColor: controls.color + ' !important',
           }"
           :class="{ 'swiper-pagination-bullet-active': index === activeIndex }"
         />
@@ -43,12 +43,12 @@
     <div
       v-if="enableModules && handleArrows()"
       class="swiper-button-prev"
-      :style="{ color: generalTextColor + ' !important' }"
+      :style="{ color: controls.color + ' !important' }"
     />
     <div
       v-if="enableModules && handleArrows()"
       class="swiper-button-next"
-      :style="{ color: generalTextColor + ' !important' }"
+      :style="{ color: controls.color + ' !important' }"
     />
 
     <template #fallback>
@@ -62,18 +62,16 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper/modules';
 import type { BannerProps } from '../Banner/types';
 import type { Swiper as SwiperType } from 'swiper';
+import type { SlideControls } from '~/composables/useHomepage/types';
 
 const { activeIndex, setIndex } = useHomepage();
 const { handleArrows } = useCarousel();
-const { bannerItems } = defineProps<{ bannerItems: BannerProps[] }>();
+const { bannerItems } = defineProps<{ bannerItems: BannerProps[]; controls: SlideControls }>();
 const enableModules = computed(() => bannerItems.length > 1);
-
-const generalTextColor = ref('inherit');
 
 let slider: SwiperType | null = null;
 
 const onSwiperInit = (swiper: SwiperType) => {
-  generalTextColor.value = bannerItems[0]?.text?.color ?? 'inherit';
   slider = swiper;
   setIndex(swiper.realIndex);
 };

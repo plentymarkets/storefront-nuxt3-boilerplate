@@ -1,10 +1,10 @@
 export type NewsletterSubscribeProps = {
-  text?: {
+  text: {
     bgColor?: string;
     title?: string;
     htmlDescription?: string;
   };
-  input?: {
+  input: {
     displayNameInput?: boolean;
     nameIsRequired?: boolean;
   };

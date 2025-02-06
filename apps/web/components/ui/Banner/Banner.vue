@@ -26,7 +26,11 @@
   >
     <div
       :class="bannerContentClass"
-      :style="{ backgroundColor: hexToRgba(props.bannerProps.text.bgcolor, props.bannerProps.text.bgopacity) }"
+      :style="{
+        backgroundColor: props.bannerProps.text.background
+          ? hexToRgba(props.bannerProps.text.bgcolor, props.bannerProps.text.bgopacity)
+          : '',
+      }"
       :data-testid="'banner-content-' + props.index"
     >
       <div
@@ -109,6 +113,9 @@ const hexToRgba = (hex: string = '#fff', opacity: number = 1) => {
 
 const getImageUrl = () => {
   switch (viewport.breakpoint.value) {
+    case '4xl': {
+      return props.bannerProps.image?.wideScreen ?? '';
+    }
     case 'lg': {
       return props.bannerProps.image?.desktop ?? '';
     }

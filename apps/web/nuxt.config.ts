@@ -63,7 +63,7 @@ export default defineNuxtConfig({
       blockSize: 'm',
       primaryColor: '#062633',
       secondaryColor: '#31687d',
-      experimentalBlockEditForm: false,
+      experimentalBlockEditForm: process.env.ENABLE_BLOCK_EDIT === 'true' || false,
     },
   },
   modules: [
@@ -145,11 +145,13 @@ export default defineNuxtConfig({
       sm: 640,
       md: 768,
       lg: 1024,
+      '4xl': 1920,
     },
     defaultBreakpoints: {
       mobile: 'sm',
       tablet: 'md',
       desktop: 'lg',
+      wideScreen: '4xl',
     },
     fallbackBreakpoint: 'lg',
     cookie: {

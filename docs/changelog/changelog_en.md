@@ -5,6 +5,7 @@
 ### New
 
 - Added slider edit.
+- Added block editing by position & typescipt restructuring
 - Fetch color settings at runtime instead of build time.
 - Added robots for static pages.
 - Adding saving functionality for site settings.

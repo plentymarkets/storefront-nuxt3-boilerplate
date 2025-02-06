@@ -30,6 +30,7 @@ export const useSiteConfiguration: UseSiteConfigurationReturn = () => {
     secondaryColor: useRuntimeConfig().public.secondaryColor,
     drawerView: null,
     blockType: '',
+    blockIndex: 0,
     blockSize: useRuntimeConfig().public.blockSize,
     selectedFont: { caption: useRuntimeConfig().public.font, value: useRuntimeConfig().public.font },
     initialData: {
@@ -97,11 +98,12 @@ export const useSiteConfiguration: UseSiteConfigurationReturn = () => {
     },
   );
 
-  const openDrawerWithView = (view: DrawerView, type: string = '') => {
+  const openDrawerWithView = (view: DrawerView, type: string = '', index: number = 0) => {
     state.value.drawerView = view;
     state.value.drawerOpen = true;
 
     state.value.blockType = type;
+    state.value.blockIndex = index;
 
     state.value.placement = view === 'blocksSettings' ? 'right' : 'left';
   };

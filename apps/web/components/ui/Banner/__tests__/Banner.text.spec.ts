@@ -12,6 +12,9 @@ describe('Banner text', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -33,6 +36,9 @@ describe('Banner text', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -54,6 +60,9 @@ describe('Banner text', () => {
             title: 'Test title',
             htmlDescription: '<p>Test description</p>',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -75,6 +84,9 @@ describe('Banner text', () => {
             title: 'Test title',
             subtitle: 'Test subtitle',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -98,6 +110,9 @@ describe('Banner text', () => {
             htmlDescription: '<p>Test description</p>',
             color: 'red',
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -119,7 +134,11 @@ describe('Banner text', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
             bgcolor: '#0000FF',
+            background: true,
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -141,7 +160,11 @@ describe('Banner text', () => {
             subtitle: 'Test subtitle',
             htmlDescription: '<p>Test description</p>',
             bgopacity: 0.5,
+            background: true,
           },
+          image: {},
+          controls: {},
+          button: {},
         },
 
         index: 0,
@@ -164,6 +187,9 @@ describe('Banner text', () => {
               subtitle: 'Test subtitle',
               htmlDescription: '<p>Test description</p>',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -186,6 +212,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               textAlignment: 'center',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -208,6 +237,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               textAlignment: 'right',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -231,6 +263,9 @@ describe('Banner text', () => {
               subtitle: 'Test subtitle',
               htmlDescription: '<p>Test description</p>',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -253,6 +288,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               justify: 'center',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -275,6 +313,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               justify: 'bottom',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -298,6 +339,9 @@ describe('Banner text', () => {
               subtitle: 'Test subtitle',
               htmlDescription: '<p>Test description</p>',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -320,6 +364,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               align: 'center',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
@@ -342,6 +389,9 @@ describe('Banner text', () => {
               htmlDescription: '<p>Test description</p>',
               align: 'right',
             },
+            image: {},
+            controls: {},
+            button: {},
           },
 
           index: 0,
