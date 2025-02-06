@@ -2,6 +2,7 @@ import type { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 import { updateVsfLocale } from './utils/sdkClientHelper';
 import { ApiError } from '@plentymarkets/shop-api';
+// import { getLatestEvents } from '@plentymarkets/shop-api/src/index.server';
 
 const createHttpClient = () => {
   const client = axios.create({ withCredentials: true });
@@ -30,6 +31,13 @@ const createHttpClient = () => {
 
     client.interceptors.response.use((response) => {
       if (response.headers['x-csrf-token']) token.value = response.headers['x-csrf-token'];
+
+      // Log the latest events
+      // const latestEvents = getLatestEvents();
+      // console.log('Latest events: ', latestEvents);
+
+      console.log('PWA Response: ', response);
+
       return response;
     });
   }

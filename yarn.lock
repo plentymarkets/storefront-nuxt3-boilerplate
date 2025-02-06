@@ -5037,7 +5037,7 @@ __metadata:
     "@nuxt/test-utils": "npm:^3.13.1"
     "@nuxtjs/turnstile": "npm:^0.8.0"
     "@paypal/paypal-js": "npm:8.1.0"
-    "@plentymarkets/shop-api": "npm:^0.89.0"
+    "@plentymarkets/shop-api": "file:/Users/cristi/workspace/plentymarkets-sdk/packages/api-client"
     "@types/applepayjs": "npm:^14.0.8"
     "@types/drift-zoom": "npm:^1.5.2"
     "@types/googlepay": "npm:^0.7.6"
@@ -5074,14 +5074,35 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@plentymarkets/shop-api@npm:^0.89.0":
+"@plentymarkets/shop-api@file:/Users/cristi/workspace/plentymarkets-sdk/packages/api-client::locator=%40plentymarkets%2Fplentyshop-pwa%40workspace%3A.":
   version: 0.89.0
-  resolution: "@plentymarkets/shop-api@npm:0.89.0"
+  resolution: "@plentymarkets/shop-api@file:/Users/cristi/workspace/plentymarkets-sdk/packages/api-client#/Users/cristi/workspace/plentymarkets-sdk/packages/api-client::hash=62b2af&locator=%40plentymarkets%2Fplentyshop-pwa%40workspace%3A."
   dependencies:
     "@vue-storefront/middleware": "npm:^5.3.2"
     axios: "npm:^1.7.7"
     consola: "npm:^3.2.3"
-  checksum: 10c0/81697b9b2821af774cfc42c48cd28eceedcd2e451e92e1e0a6f426259dc7c9c91450fda5cfdc518c0aebca5fcb154037fd0b4493b8f86b0b60ecdab15e8ec1d9
+  checksum: 10c0/76101659ec2078f82c3c5fd81258ab747e978476b2fd2031c5d8b7f1721e0754ece6041bc2ae8111184f6e44d39f7f1798278499a6883267c83fc28952b33bf6
+  languageName: node
+  linkType: hard
+
+"@plentymarkets/shop-api@npm:^0.88.0":
+  version: 0.88.0
+  resolution: "@plentymarkets/shop-api@npm:0.88.0"
+  dependencies:
+    "@vue-storefront/middleware": "npm:^5.3.2"
+    axios: "npm:^1.7.7"
+    consola: "npm:^3.2.3"
+  checksum: 10c0/d2a16eefce18315cbb781fbecd8e0b292287fa9c04d19b5e100f867fe80247c426704cf39c731c56062e68fd93b555ac6f8d6b4a12f3b232760bead0a460a43f
+  languageName: node
+  linkType: hard
+
+"@plentymarkets/shop-core@file:/Users/cristi/workspace/shop-core::locator=web%40workspace%3Aapps%2Fweb":
+  version: 1.0.0
+  resolution: "@plentymarkets/shop-core@file:/Users/cristi/workspace/shop-core#/Users/cristi/workspace/shop-core::hash=0edc8f&locator=web%40workspace%3Aapps%2Fweb"
+  dependencies:
+    "@plentymarkets/shop-api": "npm:^0.88.0"
+    mitt: "npm:^3.0.1"
+  checksum: 10c0/a790c64bcedb2326cfcb02cf4c6b52aa22a1ea311efdbff45f7497667f0bd708508bc4ab7a04e719f693986575fdc1ad0597a51aeee6545d104150e3db172f5e
   languageName: node
   linkType: hard
 
@@ -23747,6 +23768,7 @@ __metadata:
     "@nuxtjs/sitemap": "npm:^5.2.2"
     "@nuxtjs/tailwindcss": "npm:^6.12.0"
     "@nuxtjs/turnstile": "npm:^0.8.0"
+    "@plentymarkets/shop-core": "file:/Users/cristi/workspace/shop-core"
     "@plentymarkets/tailwind-colors": "npm:^1.0.1"
     "@savvywombat/tailwindcss-grid-areas": "npm:^3.1.0"
     "@storefront-ui/typography": "npm:^2.6.1"
