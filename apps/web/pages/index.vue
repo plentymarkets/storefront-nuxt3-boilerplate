@@ -57,7 +57,7 @@ const { data, fetchPageTemplate, dataIsEmpty } = useHomepage();
 // const { on } = usePlentyEvent();
 
 // on('userLogin', () => {
-//   fetchPageTemplate();
+//   //
 // });
 
 const { isEditing, isEditingEnabled, disableActions } = useEditor();
