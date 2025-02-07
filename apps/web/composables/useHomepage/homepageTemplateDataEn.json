@@ -98,7 +98,8 @@
           "htmlDescription": "<p>Our headphone collection sets new standards in audio precision. With deep bass, crystal-clear highs, and an impressive soundstage, these headphones deliver a unique listening experience for every music genre. Combining modern design, maximum comfort, and cutting-edge technology, they are the perfect choice for anyone who refuses to compromise on sound quality.</p><ul class='list-disc pl-4 mt-4 space-y-1'><li>Premium, studio-quality sound</li><li>Comfortable fit for extended listening</li><li>Long-lasting battery life</li><li>Seamless wireless connectivity</li></ul>",
           "title": "A New Listening Experience",
           "subtitle": "Innovative technology meets modern fashion",
-          "textAlignment": "left"
+          "textAlignment": "left",
+          "color": "#000"
         },
         "button": {
           "label": "To our headphones",

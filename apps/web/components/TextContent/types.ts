@@ -4,6 +4,7 @@ export type TextContentProps = {
     title?: string;
     subtitle?: string;
     htmlDescription?: string;
+    color?: string;
     textAlignment?: 'left' | 'center' | 'right';
   };
   button?: {

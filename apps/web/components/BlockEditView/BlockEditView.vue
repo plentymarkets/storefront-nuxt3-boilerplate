@@ -18,6 +18,8 @@ const { drawerOpen, blockType } = useSiteConfiguration();
 
 const getBlock = (view: string) => {
   if (view === 'UiCarousel') return resolveComponent('BlockSlider');
-  // if (view === 'recommendedProducts') return resolveComponent('BlockRecommendedProducts');
+  if (view === 'UiImageText') return resolveComponent('UiImageTextForm');
+  if (view === 'NewsletterSubscribe') return resolveComponent('NewsletterSubscribeForm');
+  if (view === 'UiTextCard') return resolveComponent('UiTextCardForm');
 };
 </script>

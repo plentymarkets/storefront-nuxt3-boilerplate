@@ -98,7 +98,9 @@
           "htmlDescription": "<p>Unsere Kopfhörer-Kollektion setzt neue Maßstäbe in Sachen Audio-Präzision. Mit tiefem Bass, klaren Höhen und einem eindrucksvollen Klangbild bieten diese Kopfhörer ein einzigartiges Hörerlebnis für jedes Musikgenre. Mit einer Kombination aus modernem Design, höchstem Komfort und neuester Technologie sind sie die perfekte Wahl für alle, die keine Kompromisse bei der Klangqualität eingehen möchten.</p><ul class='list-disc pl-4 mt-4 space-y-1'><li>Premium-Sound in Studioqualität</li><li>Elegant und formschön</li><li>Lange Akkulaufzeit</li><li>Kabellose Verbindung via Bluetooth</li></ul>",
           "title": "Entdecken Sie Technik und Stil",
           "subtitle": "Innovative Technologie trifft moderne Fashion",
-          "textAlignment": "left"
+          "textAlignment": "left",
+          "color": "#000"
+
         },
         "button": {
           "label": "Zu unseren Kopfhörern",

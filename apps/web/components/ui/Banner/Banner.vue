@@ -2,7 +2,7 @@
   <NuxtImg
     :src="getImageUrl()"
     :alt="props.bannerProps.image?.alt ?? ''"
-    class="h-[320px] w-full object-cover"
+    class="w-full object-cover"
     :style="{
       filter: props.bannerProps.image?.brightness
         ? 'brightness(' + (props.bannerProps.image?.brightness ?? 1) + ')'
@@ -130,6 +130,10 @@ const getImageUrl = () => {
 
 const getImageHeight = () => {
   switch (viewport.breakpoint.value) {
+    case '4xl': {
+      return '768px';
+    }
+
     case 'lg': {
       return '576px';
     }

@@ -41,7 +41,7 @@ const addBlock = (category: string, variationIndex: number) => {
 
 const tempOpenDrawerCondition = (blockName: string) => {
   if (useRuntimeConfig().public.experimentalBlockEditForm) {
-    openDrawerWithView('blocksSettings', blockName);
+    openDrawerWithView('blocksSettings', blockName, newBlockPosition.value);
   }
 };
 </script>

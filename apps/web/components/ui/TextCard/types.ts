@@ -5,6 +5,7 @@ export type TextCardProps = {
     subtitle?: string;
     htmlDescription?: string;
     textAlignment?: 'left' | 'center' | 'right';
+    color?: string;
   };
   button: {
     label?: string;
