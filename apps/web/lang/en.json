@@ -883,7 +883,7 @@
   "shippingAddress": "Shipping address",
   "shippingAddressRequired": "Please select a shipping address.",
   "shippingMethod": {
-    "description": "Not available until a shipping address is provided.",
+    "description": "Enter your shipping address to view available shipping methods.",
     "free": "Free",
     "heading": "Shipping method",
     "noMethodsAvailable": "There are no shipping methods available. Please contact the webshop provider.",

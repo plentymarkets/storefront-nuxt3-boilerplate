@@ -7,12 +7,12 @@
   >
   <label class="md:col-span-3">
       <UiFormLabel>
-        {{ $t('form.emailLabel') }}
-        {{ $t('form.required') }}
+        {{ $t('form.emailLabel') }} {{ $t('form.required') }}
       </UiFormLabel>
       <SfInput
         v-model="email"
         name="email"
+        autofocus
         autocomplete="email"
         v-bind="emailAttribute"
         :invalid="Boolean(errors['email'])"
