@@ -41,6 +41,7 @@ export const useAddressForm = (type: AddressType) => {
 
   const validationSchema = toTypedSchema(
     object({
+      email: string().email($i18n.t('errorMessages.invalidEmail')).required($i18n.t('errorMessages.requiredField')),
       firstName: string().when([], {
         is: () => !state.value.hasCompany,
         then: () => string().required($i18n.t('errorMessages.requiredField')).default(''),
