@@ -1,5 +1,5 @@
 <template>
-  <TextContent class="pb-4" :text="props.text" />
+  <TextContent :data-testing="`recommended-text-${props.index}`" class="pb-4" :text="props.text" />
   <ProductSlider v-if="recommendedProducts?.length" :items="recommendedProducts" />
 </template>
 

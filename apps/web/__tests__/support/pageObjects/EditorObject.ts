@@ -252,5 +252,21 @@ export class EditorObject extends PageObject {
       first().should('contain.text', 'Discover Tech').
       next().should('contain.text', 'Feel the music');
   }
+
+  openBlockSection(index: string) {
+    cy.getByTestId(`open-editor-button-${index}`).click({ force: true });
+  }
+  
+  checkRecommendedSection() {
+    cy.getByTestId(`recommended-section`).should('exist');
+  }
+
+  checkExistanceAndValue(label: string, value: string) {
+    cy.getByTestId(label).should('exist').should('have.value', value);
+  }
+
+  checkExistance(label: string) {
+    cy.getByTestId(label).should('exist');
+  }
 }
 

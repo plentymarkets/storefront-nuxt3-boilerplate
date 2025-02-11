@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 sticky top-[52px] h-[calc(100vh-150px)] overflow-y-auto">
+  <div data-testid="recommended-section" class="p-2 sticky top-[52px] h-[calc(100vh-150px)] overflow-y-auto">
     <div>
       <UiFormLabel>Pre-title</UiFormLabel>
       <SfInput data-testid="recommended-block-pretitle" v-model="recommendedProductsOptions.text.pretitle" name="preTitle" type="text" placeholder="PreTitle" />
@@ -60,6 +60,7 @@
           @click="recommendedProductsOptions.text.textAlignment = 'left'"
         >
           <SfIconCheck
+            data-testid="recommended-block-textAlignment-left-check"
             class="mr-1 w-[1.1rem]"
             :class="{ invisible: recommendedProductsOptions.text.textAlignment !== 'left' }"
           />
@@ -76,6 +77,7 @@
           @click="recommendedProductsOptions.text.textAlignment = 'center'"
         >
           <SfIconCheck
+            data-testid="recommended-block-textAlignment-center-check"
             class="mr-1 w-[1.1rem]"
             :class="{ invisible: recommendedProductsOptions.text.textAlignment !== 'center' }"
           />
@@ -92,6 +94,7 @@
           @click="recommendedProductsOptions.text.textAlignment = 'right'"
         >
           <SfIconCheck
+            data-testid="recommended-block-textAlignment-right-check"
             class="mr-1 w-[1.1rem]"
             :class="{ invisible: recommendedProductsOptions.text.textAlignment !== 'right' }"
           />

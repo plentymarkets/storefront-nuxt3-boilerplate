@@ -5,7 +5,7 @@
   >
     <button
       class="text-black hover:bg-gray-100 p-1 rounded"
-      data-testid="open-editor-button"
+      :data-testid="`open-editor-button-${index}`"
       aria-label="editor button"
       @click="triggerEdit"
     >
