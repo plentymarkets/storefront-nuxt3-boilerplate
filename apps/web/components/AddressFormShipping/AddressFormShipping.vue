@@ -5,20 +5,6 @@
     data-testid="shipping-address-form"
     @submit="submitForm"
   >
-  <label class="md:col-span-3">
-      <UiFormLabel>
-        {{ $t('form.emailLabel') }} {{ $t('form.required') }}
-      </UiFormLabel>
-      <SfInput
-        v-model="email"
-        name="email"
-        autofocus
-        autocomplete="email"
-        v-bind="emailAttribute"
-        :invalid="Boolean(errors['email'])"
-      />
-      <ErrorMessage as="span" name="email" class="flex text-negative-700 text-sm mt-2" />
-    </label>
     <label>
       <UiFormLabel>
         {{ hasShippingCompany ? $t('form.firstNameLabel') : `${$t('form.firstNameLabel')} ${$t('form.required')}` }}
@@ -181,7 +167,6 @@ const {
 } = useAddressForm(AddressType.Shipping);
 const { defineField, errors, setValues, validate, handleSubmit } = useForm({ validationSchema: shippingSchema });
 
-const [email, emailAttribute] = defineField('email');
 const [firstName, firstNameAttributes] = defineField('firstName');
 const [lastName, lastNameAttributes] = defineField('lastName');
 const [country, countryAttributes] = defineField('country');

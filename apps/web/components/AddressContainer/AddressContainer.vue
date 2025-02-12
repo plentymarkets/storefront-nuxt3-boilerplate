@@ -1,5 +1,8 @@
 <template>
   <div data-testid="checkout-address" class="md:px-4 py-6">
+    <div v-if="isShipping" class="flex flex-col w-full">
+      <ContactInformation ref="contactInformation" />
+    </div>
     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
       <h2 class="text-neutral-900 text-lg font-bold">
         {{ isShipping ? t('shipping.heading') : t('billing.heading') }}
@@ -83,6 +86,9 @@ const addressFormShipping = ref(null as any);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const addressFormBilling = ref(null as any);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const contactInformation = ref(null as any);
+
 const sameAsShippingAddress = computed(() =>
   isBilling
     ? checkoutAddress.value?.id !== undefined &&
@@ -114,6 +120,15 @@ const validateAndSubmitForm = async () => {
   const formData = isShipping
     ? await addressFormShipping.value?.validate()
     : await addressFormBilling.value?.validate();
+
+  console.log(contactInformation.value)
+
+  if (contactInformation.value.contactInformationForm.value.customerEmail){
+    console.log(contactInformation.value.contactInformationForm.value.customerEmail)
+  };
+
+  contactInformation.value.contactInformationForm.value.validate();
+  
 
   if (formData.valid) {
     isShipping ? await addressFormShipping.value?.submitForm() : await addressFormBilling.value?.submitForm();
