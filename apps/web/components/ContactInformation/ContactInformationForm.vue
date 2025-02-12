@@ -2,7 +2,8 @@
   <form data-testid="contact-information-form" novalidate>
     <label>
       <UiFormLabel>{{ t('contactInfo.email') }} {{ $t('form.required') }}</UiFormLabel>
-      <SfInput v-model="customerEmail" autofocus v-bind="customerEmailAttributes"
+      <SfInput
+        v-model="customerEmail" autofocus v-bind="customerEmailAttributes"
         :invalid="Boolean(errors['cart.customerEmail'])" name="customerEmail" type="email" autocomplete="email" />
       <ErrorMessage as="span" name="cart.customerEmail" class="flex text-negative-700 text-sm mt-2" />
     </label>
@@ -32,14 +33,7 @@ const { errors, meta, defineField, validate } = useForm({
   validationSchema: validationSchema,
 });
 
-const { setMail } = useCustomer();
-
 const [customerEmail, customerEmailAttributes] = defineField('cart.customerEmail');
-watch(customerEmail, ((email) => {
-   if (email) {
-     setMail(email);
-   }
-}));
 
 defineExpose({ customerEmail, meta, validate });
 
