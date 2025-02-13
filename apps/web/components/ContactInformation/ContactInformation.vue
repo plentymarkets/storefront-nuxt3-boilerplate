@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center my-2">
       <h2 class="text-neutral-900 text-lg font-bold">{{ $t('contactInfo.heading') }}</h2>
     </div>
-    <p v-if="cart.customerEmail" class="mt-4 md:w-[520px]">{{ cart.customerEmail }}</p>
+    <p v-if="cart.customerEmail && !sessionData.user?.guestMail" class="mt-4 md:w-[520px]">{{ cart.customerEmail }}</p>
     <form v-else data-testid="contact-information-form" novalidate>
       <label>
         <UiFormLabel>{{ t('contactInfo.email') }} {{ $t('form.required') }}</UiFormLabel>
@@ -65,6 +65,7 @@ watch(
   () => sessionData.value?.user,
   (userData) => {
     cart.value.customerEmail = userData?.email ?? userData?.guestMail ?? '';
+    customerEmail.value = cart.value.customerEmail ?? '';
   },
   { immediate: true },
 );
