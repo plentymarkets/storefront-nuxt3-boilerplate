@@ -38,9 +38,9 @@
             @click="edit(checkoutAddress)"
           >
             <template v-if="!editing && !showNewForm">{{ t('contactInfo.edit') }}</template>
-            <SfIconClose v-else />
-          </UiButton>
-        </SfTooltip> -->
+<SfIconClose v-else />
+</UiButton>
+</SfTooltip> -->
       </div>
     </div>
 
@@ -69,7 +69,6 @@
 </template>
 
 <script setup lang="ts">
-import { SfIconClose, SfTooltip } from '@storefront-ui/vue';
 import type { AddressContainerProps } from './types';
 import { type Address, AddressType } from '@plentymarkets/shop-api';
 
@@ -92,7 +91,7 @@ const contactInformation = ref(null as any);
 const sameAsShippingAddress = computed(() =>
   isBilling
     ? checkoutAddress.value?.id !== undefined &&
-      checkoutAddress.value?.id === useCheckoutAddress(AddressType.Shipping).checkoutAddress.value?.id
+    checkoutAddress.value?.id === useCheckoutAddress(AddressType.Shipping).checkoutAddress.value?.id
     : false,
 );
 
@@ -117,16 +116,17 @@ const edit = (address: Address) => {
 };
 
 const validateAndSubmitForm = async () => {
+
+  if (contactInformation.value) {
+    const contactValid = contactInformation.value?.validate();
+    if (!contactValid) return;
+  }
+
   const formData = isShipping
     ? await addressFormShipping.value?.validate()
     : await addressFormBilling.value?.validate();
 
-  if (contactInformation.value?.contactInformationForm?.value?.customerEmail?.value) {
-    console.log(contactInformation.value.contactInformationForm.value.customerEmail?.value)
-  };
 
-  contactInformation?.value?.contactInformationForm?.value?.validate();
-  
 
   if (formData.valid) {
     isShipping ? await addressFormShipping.value?.submitForm() : await addressFormBilling.value?.submitForm();

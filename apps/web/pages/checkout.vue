@@ -209,14 +209,10 @@ const paypalApplePayPaymentId = computed(() => {
   return paymentProviderGetters.getIdByPaymentKey(paymentMethods.value.list, PayPalApplePayKey);
 });
 
-const readyToBuy = () => {
+const readyToBuy = async () => {
 
 
-  shippingAddressContainer?.value?.validateAndSubmitForm();
-  if (anyAddressFormIsOpen.value) {
-    /* send({ type: 'secondary', message: t('unsavedAddress') }); */
-    return backToFormEditing();
-  }
+  await shippingAddressContainer?.value?.validateAndSubmitForm();
 
   if (!hasShippingAddress.value || !hasBillingAddress.value) {
     send({ type: 'secondary', message: t('errorMessages.checkout.missingAddress') });
@@ -246,14 +242,14 @@ const handleRegularOrder = async () => {
   }
 };
 
-const handleReadyToBuy = (callback?: PayPalAddToCartCallback) => {
+const handleReadyToBuy = async (callback?: PayPalAddToCartCallback) => {
   if (callback) {
-    callback(readyToBuy());
+    callback(await readyToBuy());
   }
 };
 
 const order = async () => {
-  if (!readyToBuy()) return;
+  if (!await readyToBuy()) return;
 
   processingOrder.value = true;
   const paymentMethodsById = _.keyBy(paymentMethods.value.list, 'id');
