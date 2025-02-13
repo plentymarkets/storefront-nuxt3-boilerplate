@@ -7,10 +7,8 @@
   >
     <div v-if="cart" class="lg:grid lg:grid-cols-12 lg:gap-x-6">
       <div class="col-span-6 xl:col-span-7 mb-10 lg:mb-0">
-        <UiDivider class="w-screen md:w-auto -mx-4 md:mx-0" />
-        <ContactInformation />
         <UiDivider id="top-shipping-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
-        <AddressContainer id="shipping-address" :key="0" :type="AddressType.Shipping" />
+        <AddressContainer id="shipping-address" :key="0" ref="shippingAddressContainer" :type="AddressType.Shipping" />
         <UiDivider id="top-billing-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
         <AddressContainer id="billing-address" :key="1" :type="AddressType.Billing" />
         <UiDivider id="bottom-billing-divider" class-name="w-screen md:w-auto -mx-4 md:mx-0" />
@@ -144,6 +142,9 @@ const {
   handlePaymentMethodUpdate,
 } = useCheckoutPagePaymentAndShipping();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const shippingAddressContainer = ref(null as any);
+
 emit('frontend:beginCheckout', cart.value);
 
 const checkPayPalPaymentsEligible = async () => {
@@ -209,11 +210,13 @@ const paypalApplePayPaymentId = computed(() => {
   return paymentProviderGetters.getIdByPaymentKey(paymentMethods.value.list, PayPalApplePayKey);
 });
 
-const readyToBuy = () => {
+const readyToBuy = async () => {
   if (anyAddressFormIsOpen.value) {
     send({ type: 'secondary', message: t('unsavedAddress') });
     return backToFormEditing();
   }
+
+  await shippingAddressContainer?.value?.validateAndSubmitForm();
 
   if (!hasShippingAddress.value || !hasBillingAddress.value) {
     send({ type: 'secondary', message: t('errorMessages.checkout.missingAddress') });
@@ -243,14 +246,14 @@ const handleRegularOrder = async () => {
   }
 };
 
-const handleReadyToBuy = (callback?: PayPalAddToCartCallback) => {
+const handleReadyToBuy = async (callback?: PayPalAddToCartCallback) => {
   if (callback) {
-    callback(readyToBuy());
+    callback(await readyToBuy());
   }
 };
 
 const order = async () => {
-  if (!readyToBuy()) return;
+  if (!await readyToBuy()) return;
 
   processingOrder.value = true;
   const paymentMethodsById = _.keyBy(paymentMethods.value.list, 'id');

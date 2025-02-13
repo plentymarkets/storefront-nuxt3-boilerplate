@@ -1,72 +1,73 @@
 <template>
-  <div data-testid="contact-information" class="md:px-4 py-6">
-    <div class="flex justify-between items-center">
+  <div data-testid="contact-information" class="py-6">
+    <div class="flex justify-between items-center my-2">
       <h2 class="text-neutral-900 text-lg font-bold">{{ $t('contactInfo.heading') }}</h2>
-      <UiButton v-if="!disabled && cart.customerEmail && !isAuthorized" variant="secondary" @click="open">
-        <SfIconBase v-if="isMobile" viewBox="0 0 34 40" class="w-6 h-6 pt-[3px]">
-          <path :d="penPath" />
-        </SfIconBase>
-        <template v-else>{{ $t('contactInfo.edit') }}</template>
-      </UiButton>
     </div>
-
     <p v-if="cart.customerEmail" class="mt-4 md:w-[520px]">{{ cart.customerEmail }}</p>
-    <div v-else class="w-full md:max-w-[520px]">
-      <p>{{ $t('contactInfo.description') }}</p>
-      <UiButton v-if="!disabled" class="mt-4 w-full md:w-auto" variant="secondary" @click="open">
-        {{ $t('contactInfo.add') }}
-      </UiButton>
-    </div>
-
-    <UiModal
-      v-if="isOpen"
-      v-model="isOpen"
-      :disable-click-away="!cart.customerEmail"
-      :disable-esc="!cart.customerEmail"
-      tag="section"
-      role="dialog"
-      class="h-full w-full overflow-auto md:w-[600px] md:h-fit"
-      aria-labelledby="contact-modal-title"
-    >
-      <header>
-        <UiButton v-if="cart.customerEmail" square variant="tertiary" class="absolute right-2 top-2" @click="close">
-          <SfIconClose />
-        </UiButton>
-        <h3 id="contact-modal-title" class="text-neutral-900 text-lg md:text-2xl font-bold mb-4">
-          {{ $t('contactInfo.heading') }}
-        </h3>
-      </header>
-      <ContactInformationForm @on-save="saveContactInformation" @on-cancel="close" />
-    </UiModal>
+    <form v-else data-testid="contact-information-form" novalidate>
+      <label>
+        <UiFormLabel>{{ t('contactInfo.email') }} {{ $t('form.required') }}</UiFormLabel>
+        <SfInput
+          v-model="customerEmail" autofocus v-bind="customerEmailAttributes"
+          :invalid="Boolean(errors['cart.customerEmail'])"
+          name="customerEmail" type="email" autocomplete="email" @blur="onLeaveInput" />
+        <ErrorMessage as="span" name="cart.customerEmail" class="flex text-negative-700 text-sm mt-2" />
+      </label>
+    </form>
   </div>
 </template>
 
+
 <script lang="ts" setup>
-import { SfIconBase, SfIconClose, useDisclosure } from '@storefront-ui/vue';
-import type { ContactInformationProps } from './types';
-import { penPath } from '~/assets/icons/paths/pen';
+import { SfInput } from '@storefront-ui/vue';
 
-const { disabled = false } = defineProps<ContactInformationProps>();
+import { useForm, ErrorMessage } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/yup';
+import { object, string } from 'yup';
 
-const viewport = useViewport();
-const { data: sessionData, loginAsGuest, getSession, isAuthorized } = useCustomer();
-const { isOpen, open, close } = useDisclosure();
+const { data: sessionData, loginAsGuest } = useCustomer();
+
 const cart = ref({ customerEmail: sessionData.value?.user?.email ?? sessionData.value?.user?.guestMail ?? '' });
-const isMobile = computed(() => viewport.isLessThan('md'));
 
-const saveContactInformation = async (email: string) => {
-  cart.value.customerEmail = email;
-  await loginAsGuest(email);
-  await getSession();
-  close();
-};
+const { t } = useI18n();
+
+const validationSchema = toTypedSchema(
+  object({
+    cart: object({
+      customerEmail: string()
+        .email(t('errorMessages.email.valid'))
+        .required(t('errorMessages.email.required'))
+        .default(''),
+    }),
+  }),
+);
+
+const { errors, meta, defineField, validate } = useForm({
+  validationSchema: validationSchema,
+});
+
+const [customerEmail, customerEmailAttributes] = defineField('cart.customerEmail');
+
+
+const onLeaveInput = () => {
+  submitForm();
+}
+
+const submitForm = async () => {
+  if (meta.value.valid && customerEmail.value) {
+    return loginAsGuest(customerEmail.value);
+  }
+
+  return false;
+}
 
 watch(
   () => sessionData.value?.user,
   (userData) => {
     cart.value.customerEmail = userData?.email ?? userData?.guestMail ?? '';
-    cart.value.customerEmail ? close() : open();
   },
   { immediate: true },
 );
+
+defineExpose({ meta, validate, submitForm });
 </script>

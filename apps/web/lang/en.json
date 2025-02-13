@@ -524,7 +524,8 @@
     "pleaseFillOutAllFields": "Please fill out all these fields.",
     "requiredField": "This is a mandatory field.",
     "turnstileRequired": "Please check the box to verify that you are human.",
-    "wholeNumber": "Enter a whole number."
+    "wholeNumber": "Enter a whole number.",
+    "invalidEmail": "This field needs to be a valid email."
   },
   "estimatedTax": "VAT",
   "etaDelivery": "Estimated delivery time",

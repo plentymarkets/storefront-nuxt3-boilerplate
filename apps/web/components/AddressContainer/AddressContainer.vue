@@ -1,5 +1,8 @@
 <template>
   <div data-testid="checkout-address" class="md:px-4 py-6">
+    <div v-if="isShipping" class="flex flex-col w-full">
+      <ContactInformation ref="contactInformation" />
+    </div>
     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
       <h2 class="text-neutral-900 text-lg font-bold">
         {{ isShipping ? t('shipping.heading') : t('billing.heading') }}
@@ -82,11 +85,13 @@ const { shippingAsBilling } = useShippingAsBilling();
 const addressFormShipping = ref(null as any);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const addressFormBilling = ref(null as any);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const contactInformation = ref(null as any);
 
 const sameAsShippingAddress = computed(() =>
   isBilling
     ? checkoutAddress.value?.id !== undefined &&
-      checkoutAddress.value?.id === useCheckoutAddress(AddressType.Shipping).checkoutAddress.value?.id
+    checkoutAddress.value?.id === useCheckoutAddress(AddressType.Shipping).checkoutAddress.value?.id
     : false,
 );
 
@@ -111,6 +116,11 @@ const edit = (address: Address) => {
 };
 
 const validateAndSubmitForm = async () => {
+  if (contactInformation.value) {
+    const contactValid = contactInformation.value?.meta.valid;
+    if (!contactValid) return;
+  }
+
   const formData = isShipping
     ? await addressFormShipping.value?.validate()
     : await addressFormBilling.value?.validate();
@@ -132,4 +142,8 @@ watch(
   },
   { immediate: true },
 );
+
+defineExpose({
+  validateAndSubmitForm,
+});
 </script>

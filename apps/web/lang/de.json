@@ -524,7 +524,8 @@
     "pleaseFillOutAllFields": "Bitte füllen Sie alle diese Felder aus.",
     "requiredField": "Dieses Feld ist erforderlich.",
     "turnstileRequired": "Bitte aktivieren Sie die Checkbox, um zu bestätigen, dass Sie kein Bot sind.",
-    "wholeNumber": "Geben Sie eine ganze Zahl ein."
+    "wholeNumber": "Geben Sie eine ganze Zahl ein.",
+    "invalidEmail": "In diesem Feld muss es sich um eine gültige E-Mail-Adresse handeln."
   },
   "estimatedTax": "MwSt.",
   "etaDelivery": "Voraussichtliche Lieferdauer",
