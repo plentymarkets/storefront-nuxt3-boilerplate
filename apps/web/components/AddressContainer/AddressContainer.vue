@@ -9,7 +9,7 @@
       </h2>
 
       <div class="flex mt-4 sm:justify-center sm:mt-0">
-        <AddressSelect
+        <!-- <AddressSelect
           v-if="!editing && !showNewForm"
           :type="type"
           :disabled="disabled"
@@ -40,7 +40,7 @@
             <template v-if="!editing && !showNewForm">{{ t('contactInfo.edit') }}</template>
             <SfIconClose v-else />
           </UiButton>
-        </SfTooltip>
+        </SfTooltip> -->
       </div>
     </div>
 
@@ -121,13 +121,11 @@ const validateAndSubmitForm = async () => {
     ? await addressFormShipping.value?.validate()
     : await addressFormBilling.value?.validate();
 
-  console.log(contactInformation.value)
-
-  if (contactInformation.value.contactInformationForm.value.customerEmail){
-    console.log(contactInformation.value.contactInformationForm.value.customerEmail)
+  if (contactInformation.value?.contactInformationForm?.value?.customerEmail?.value) {
+    console.log(contactInformation.value.contactInformationForm.value.customerEmail?.value)
   };
 
-  contactInformation.value.contactInformationForm.value.validate();
+  contactInformation?.value?.contactInformationForm?.value?.validate();
   
 
   if (formData.valid) {
@@ -147,4 +145,8 @@ watch(
   },
   { immediate: true },
 );
+
+defineExpose({
+  validateAndSubmitForm,
+});
 </script>

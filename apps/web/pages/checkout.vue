@@ -8,9 +8,7 @@
     <div v-if="cart" class="lg:grid lg:grid-cols-12 lg:gap-x-6">
       <div class="col-span-6 xl:col-span-7 mb-10 lg:mb-0">
         <UiDivider id="top-shipping-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
-        <AddressContainer id="shipping-address" :key="0" :type="AddressType.Shipping" />
-        <UiDivider id="top-billing-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
-        <AddressContainer id="billing-address" :key="1" :type="AddressType.Billing" />
+        <AddressContainer id="shipping-address" :key="0" :type="AddressType.Shipping" ref="shippingAddressContainer" />
         <UiDivider id="bottom-billing-divider" class-name="w-screen md:w-auto -mx-4 md:mx-0" />
         <div class="relative" :class="{ 'pointer-events-none opacity-50': disableShippingPayment }">
           <ShippingMethod :disabled="disableShippingPayment" @update:shipping-method="handleShippingMethodUpdate" />
@@ -22,6 +20,8 @@
           <UiDivider class="w-screen md:w-auto -mx-4 md:mx-0" />
           <CheckoutPayment :disabled="disableShippingPayment" @update:active-payment="handlePaymentMethodUpdate" />
         </div>
+        <UiDivider id="top-billing-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
+        <AddressContainer id="billing-address" :key="1" :type="AddressType.Billing" />
         <UiDivider class="w-screen md:w-auto -mx-4 md:mx-0 mb-10" />
         <CheckoutGeneralTerms />
       </div>
@@ -142,6 +142,8 @@ const {
   handlePaymentMethodUpdate,
 } = useCheckoutPagePaymentAndShipping();
 
+const shippingAddressContainer = ref(null as any);
+
 emit('frontend:beginCheckout', cart.value);
 
 const checkPayPalPaymentsEligible = async () => {
@@ -208,8 +210,11 @@ const paypalApplePayPaymentId = computed(() => {
 });
 
 const readyToBuy = () => {
+
+
+  shippingAddressContainer?.value?.validateAndSubmitForm();
   if (anyAddressFormIsOpen.value) {
-    send({ type: 'secondary', message: t('unsavedAddress') });
+    /* send({ type: 'secondary', message: t('unsavedAddress') }); */
     return backToFormEditing();
   }
 
