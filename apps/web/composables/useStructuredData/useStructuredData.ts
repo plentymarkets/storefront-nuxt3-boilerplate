@@ -7,9 +7,8 @@ import type {
   UseStructuredDataState,
 } from './types';
 import { categoryTreeGetters, productGetters, reviewGetters, productSeoSettingsGetters } from '@plentymarkets/shop-api';
-import type { CategoryTreeItem, Product, CanonicalAlternate } from '@plentymarkets/shop-api';
+import type { CategoryTreeItem, Product, CanonicalAlternate, StructuredReview } from '@plentymarkets/shop-api';
 import { useProductReviews } from '../useProductReviews';
-import { useProductReviewAverage } from '../useProductReviewAverage';
 
 /**
  * @description Composable managing meta data
@@ -70,25 +69,21 @@ export const useStructuredData: useStructuredDataReturn = () => {
     const productId = Number(productGetters.getItemId(product));
 
     const { data: productReviews } = useProductReviews(productId);
-    const { data: reviewAverage } = useProductReviewAverage(productId);
 
-    let reviews = null;
-    if (reviewAverage.value) {
-      reviews = [];
-      reviewGetters.getReviewItems(productReviews.value).forEach((reviewItem) => {
-        reviews.push({
-          '@type': 'Review',
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: reviewGetters.getReviewRating(reviewItem),
-          },
-          author: {
-            '@type': 'Person',
-            name: reviewGetters.getReviewAuthor(reviewItem),
-          },
-        });
+    const structuredReviews: StructuredReview[] = [];
+    reviewGetters.getReviewItems(productReviews.value).forEach((reviewItem) => {
+      structuredReviews.push({
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: reviewGetters.getReviewRating(reviewItem),
+        },
+        author: {
+          '@type': 'Person',
+          name: reviewGetters.getReviewAuthor(reviewItem),
+        },
       });
-    }
+    });
     const metaObject = {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -99,7 +94,7 @@ export const useStructuredData: useStructuredDataReturn = () => {
       identifier: productGetters.getId(product),
       description: product.texts.description,
       disambiguatingDescription: '',
-      review: reviews,
+      review: structuredReviews,
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: productGetters.getAverageRating(product),
