@@ -1,6 +1,12 @@
 <template>
   <SfTooltip :label="tooltipLabel">
-    <UiButton :disabled="disabled" variant="secondary" @click="handleAddressButtonTrigger">{{ buttonLabel }}</UiButton>
+    <UiButton
+      :disabled="disabled"
+      variant="secondary"
+      :data-testid="'address-select-' + type"
+      @click="handleAddressButtonTrigger"
+      >{{ buttonLabel }}</UiButton
+    >
   </SfTooltip>
 
   <UiModal

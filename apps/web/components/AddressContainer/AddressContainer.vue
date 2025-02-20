@@ -8,36 +8,20 @@
       <div class="flex mt-4 sm:justify-center sm:mt-0">
         <AddressSelect
           v-if="showAdressSelection"
-          :data-testid="'address-select-' + type"
           :type="type"
           :disabled="disabled"
           @new="showNewForm = true"
           @edit="edit"
         />
 
-        <UiButton
-          v-if="showAddressSaveButton"
-          :data-testid="'save-address-' + type"
-          :disabled="formIsLoading"
-          variant="secondary"
-          @click="validateAndSubmitForm"
-        >
-          {{ t('saveAddress') }}
-        </UiButton>
-
-        <SfTooltip
-          v-if="showTooltip"
-          :class="{ 'ml-2': addTooltipClass }"
-          :label="!editing && !showNewForm && !disabled ? t('editAddress') : ''"
-        >
+        <SfTooltip v-if="showEditAddressTooltip" :class="{ 'ml-2': showAdressSelection }" :label="t('editAddress')">
           <UiButton
-            :disabled="formIsLoading || disabled"
+            :disabled="!hasCheckoutAddress || formIsLoading || disabled"
             variant="secondary"
             :data-testid="'edit-address-' + type"
             @click="edit(checkoutAddress)"
           >
-            <template v-if="!editing && !showNewForm">{{ t('contactInfo.edit') }}</template>
-            <SfIconClose v-else />
+            {{ t('contactInfo.edit') }}
           </UiButton>
         </SfTooltip>
       </div>
@@ -63,6 +47,28 @@
           {{ dynamicAddressText }}
         </div>
       </template>
+
+      <div v-if="showAddressSaveButton" class="flex mt-3">
+        <UiButton
+          :data-testid="'save-address-' + type"
+          :disabled="formIsLoading"
+          variant="secondary"
+          @click="validateAndSubmitForm"
+        >
+          {{ t('saveAddress') }}
+        </UiButton>
+
+        <UiButton
+          v-if="hasCheckoutAddress"
+          :disabled="formIsLoading || disabled"
+          variant="secondary"
+          class="ml-2"
+          :data-testid="'close-address-' + type"
+          @click="edit(checkoutAddress)"
+        >
+          <SfIconClose />
+        </UiButton>
+      </div>
     </div>
   </div>
 </template>
@@ -88,7 +94,6 @@ const addressFormBilling = ref(null as any);
 
 const showAdressSelection = computed(() => isAuthorized.value && !editing.value && !showNewForm.value);
 const showAddressSaveButton = computed(() => editing.value || showNewForm.value);
-const addTooltipClass = computed(() => isAuthorized.value || editing.value || showNewForm.value);
 
 const sameAsShippingAddress = computed(() =>
   isBilling
@@ -106,10 +111,8 @@ const showDynamicAddressText = computed(
     showSameAsShippingText.value || (!hasCheckoutAddress.value && !showSameAsShippingText.value && !showNewForm.value),
 );
 
-const showTooltip = computed(
-  () =>
-    (isAuthorized.value && (showNewForm.value || hasCheckoutAddress.value)) ||
-    (!isAuthorized.value && hasCheckoutAddress.value),
+const showEditAddressTooltip = computed(
+  () => !editing.value && hasCheckoutAddress.value && !showNewForm.value && !disabled,
 );
 
 const dynamicAddressText = computed(() =>
