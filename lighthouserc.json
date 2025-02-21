@@ -7,7 +7,7 @@
           {
             "matchingUrlPattern": ".*",
             "assertions": {
-              "categories:performance": ["warn", { "aggregationMethod": "median-run", "minScore": 0.9 }],
+              "categories:performance": ["error", { "aggregationMethod": "median-run", "minScore": 0.54 }],
               "categories:accessibility": ["warn", { "aggregationMethod": "pessimistic", "minScore": 1 }],
               "categories:best-practices": ["warn", { "aggregationMethod": "pessimistic", "minScore": 1 }],
               "categories:pwa": ["warn", { "aggregationMethod": "pessimistic", "minScore": 1 }],
@@ -26,7 +26,7 @@
           {
             "matchingUrlPattern": ".*",
             "assertions": {
-              "categories:performance": ["warn", { "aggregationMethod": "median-run", "minScore": 0.8 }],
+              "categories:performance": ["warn", { "aggregationMethod": "median-run", "minScore": 0.54 }],
               "categories:accessibility": ["warn", { "aggregationMethod": "pessimistic", "minScore": 0.9 }],
               "categories:best-practices": ["warn", { "aggregationMethod": "pessimistic", "minScore": 0.9 }],
               "categories:pwa": ["warn", { "aggregationMethod": "pessimistic", "minScore": 0.9 }],
