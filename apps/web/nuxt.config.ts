@@ -8,21 +8,28 @@ import { fontFamilyNuxtConfig } from './configuration/fontFamily.config';
 export default defineNuxtConfig({
   telemetry: false,
   devtools: { enabled: true },
+
   typescript: {
     typeCheck: true,
   },
+
   app: appConfiguration,
+
   experimental: {
     asyncContext: true,
   },
+
   appConfig: {
     titleSuffix: process.env.STORENAME || 'PlentyONE Shop',
     fallbackCurrency: 'GBP',
   },
+
   imports: {
     dirs: ['composables', 'composables/**', 'utils/**'],
   },
+
   css: ['~/assets/style.scss'],
+
   // TODO: build is consistently failing because of this. check whether we need pre-render check.
   nitro: {
     prerender: {
@@ -30,16 +37,20 @@ export default defineNuxtConfig({
     },
     compressPublicAssets: true,
   },
+
   routeRules: {
     '/_ipx/**': { headers: { 'cache-control': `public, max-age=31536000, immutable` } },
     '/icons/**': { headers: { 'cache-control': `public, max-age=31536000, immutable` } },
     '/favicon.ico': { headers: { 'cache-control': `public, max-age=31536000, immutable` } },
     '/images/**': { headers: { 'cache-control': `max-age=604800` } },
   },
+
   site: {
     url: '',
   },
+
   pages: true,
+
   runtimeConfig: {
     public: {
       domain: validateApiUrl(process.env.API_URL) ?? process.env.API_ENDPOINT,
@@ -65,6 +76,7 @@ export default defineNuxtConfig({
       secondaryColor: '#31687d',
     },
   },
+
   modules: [
     '@plentymarkets/shop-module-gtag',
     '@plentymarkets/shop-core',
@@ -82,11 +94,13 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@vue-storefront/nuxt',
   ],
+
   vsf: {
     middleware: {
       apiUrl: validateApiUrl(process.env.API_URL) ?? 'http://localhost:8181',
     },
   },
+
   image: {
     screens: {
       '4xl': 1920,
@@ -100,8 +114,10 @@ export default defineNuxtConfig({
       '2xs': 360,
     },
   },
+
   googleFonts: fontFamilyNuxtConfig,
   i18n: nuxtI18nOptions,
+
   sitemap: {
     autoLastmod: true,
     xsl: '/sitemap_style.xsl',
@@ -132,13 +148,16 @@ export default defineNuxtConfig({
       },
     },
   },
+
   tailwindcss: {
     configPath: '~/configuration/tailwind.config.ts',
     exposeConfig: true,
   },
+
   turnstile: {
     siteKey: process.env?.TURNSTILESITEKEY,
   },
+
   viewport: {
     breakpoints: {
       xs: 380,
@@ -162,6 +181,7 @@ export default defineNuxtConfig({
       secure: true,
     },
   },
+
   veeValidate: {
     autoImports: false,
     componentNames: {
@@ -171,6 +191,7 @@ export default defineNuxtConfig({
       ErrorMessage: 'VeeErrorMessage',
     },
   },
+
   pwa: {
     registerType: 'autoUpdate',
     workbox: {
@@ -223,4 +244,6 @@ export default defineNuxtConfig({
 
     registerWebManifestInRouteRules: true,
   },
+
+  compatibilityDate: '2025-02-25',
 });

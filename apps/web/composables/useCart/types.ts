@@ -34,6 +34,7 @@ export interface UseCart {
   clearCartItems: ClearCartItems;
   lastUpdatedCartItem: Readonly<Ref<UseCartState['lastUpdatedCartItem']>>;
   cartIsEmpty: ComputedRef<boolean>;
+  deleteAllCartItems: () => Promise<Cart>;
 }
 
 export type UseCartReturn = () => UseCart;

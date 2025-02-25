@@ -35,7 +35,8 @@
           <SfLoaderCircular v-if="cartLoading" class="absolute top-[130px] right-0 left-0 m-auto z-[999]" size="2xl" />
           <Coupon />
           <OrderSummary v-if="cart" :cart="cart" class="mt-4">
-            <div v-if="selectedPaymentId === paypalPaymentId">
+            <MollieBuyButton v-if="isMolliePayment" :disabled="disableBuyButton" />
+            <div v-else-if="selectedPaymentId === paypalPaymentId">
               <PayPalExpressButton
                 :disabled="!termsAccepted || disableBuyButton"
                 type="Checkout"
@@ -105,6 +106,7 @@ import {
 } from '~/composables/usePayPal/types';
 import { AddressType, paymentProviderGetters, cartGetters } from '@plentymarkets/shop-api';
 import type { PayPalAddToCartCallback } from '~/components/PayPal/types';
+import MollieBuyButton from "~/components/Mollie/MollieBuyButton.vue";
 
 definePageMeta({
   layout: 'simplified-header-and-footer',
@@ -190,6 +192,11 @@ const disableBuyButton = computed(
     processingOrder.value,
 );
 
+const isMolliePayment = computed(() => {
+  if (!paymentMethods.value.list) return false;
+  const paymentMethod = paymentProviderGetters.getPaymentMethodById(paymentMethods.value.list, selectedPaymentId.value);
+  return paymentMethod ? paymentProviderGetters.getKey(paymentMethod) === 'Mollie' : false;
+})
 const paypalPaymentId = computed(() => {
   if (!paymentMethods.value.list) return null;
   return paymentProviderGetters.getIdByPaymentKey(paymentMethods.value.list, PayPalPaymentKey);

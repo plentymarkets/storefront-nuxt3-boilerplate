@@ -292,11 +292,37 @@ export const useCart: UseCartReturn = () => {
     }
   };
 
+  /**
+   * @description Function for removing all cart items.
+   * @example
+   * ``` ts
+   * deleteAllCartItems();
+   * ```
+   */
+  const deleteAllCartItems = async () => {
+    state.value.loading = true;
+    try {
+      const { data, error } = await useAsyncData(() =>
+        useSdk().plentysystems.deleteAllCartItems(),
+      );
+
+      useHandleError(error.value);
+
+      state.value.data = migrateVariationData(state.value.data, data?.value?.data) ?? state.value.data;
+      return state.value.data;
+    } catch (error) {
+      throw new Error(error as string);
+    } finally {
+      state.value.loading = false;
+    }
+  };
+
   const cartIsEmpty = computed(() => !state.value.data?.items?.length);
 
   return {
     setCart,
     clearCartItems,
+    deleteAllCartItems,
     setCartItemQuantity,
     addToCart,
     addItemsToCart,

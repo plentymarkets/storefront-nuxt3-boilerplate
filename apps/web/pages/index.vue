@@ -38,6 +38,10 @@ const {
   togglePlaceholder,
 } = useBlockManager();
 
+definePageMeta({
+  middleware: ['newsletter-confirmation', 'mollie'],
+})
+
 const { settingsIsDirty, openDrawerWithView, updateNewBlockPosition } = useSiteConfiguration();
 
 const { data, fetchPageTemplate, dataIsEmpty, initialBlocks } = useHomepage();
