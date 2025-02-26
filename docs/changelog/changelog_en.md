@@ -8,6 +8,7 @@
 
 ### 👷 Changed
 
+- Added login option for a guest user in the checkout flow.
 - The address saving buttons have been relocated to the bottom of the form to enhance the user experience.
 
 # v1.11.0 (2025-02-25) <a href="https://github.com/plentymarkets/plentyshop-pwa/compare/v1.10.1...v1.11.0" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
