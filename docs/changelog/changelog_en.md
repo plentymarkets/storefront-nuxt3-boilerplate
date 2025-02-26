@@ -85,6 +85,7 @@ We've switched our package manager from Yarn to NPM. There are two main reasons 
 - Fixed the image-to-text ratio in the Image Text block, so that both now take up 50% of the available space.
 - Fixed an index error on adding the first block.
 - The first block on the page is now always displayed as an `h1` and all other blocks are displayed as `h2`.
+- Fixed the exit of preview mode.
 
 ## v1.9.1 (2025-01-29) <a href="https://github.com/plentymarkets/plentyshop-pwa/compare/v1.9.0...v1.9.1" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
 

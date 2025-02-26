@@ -22,6 +22,7 @@
       </div>
 
       <UiButton
+        v-if="isPreview"
         variant="secondary"
         class="z-10 fixed bottom-[4.3rem] md:bottom-2 left-16 right-auto xl:right-16 xl:left-auto bg-white !py-1"
         :aria-label="$t('PreviewModeBar.label')"
@@ -36,6 +37,7 @@
 <script setup lang="ts">
 import { SfIconVisibility } from '@storefront-ui/vue';
 import type { RemoveLookupCookie } from './types';
+const { isPreview } = useBlockManager();
 
 const bannerIsHidden = ref(true);
 

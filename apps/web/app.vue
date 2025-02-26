@@ -39,15 +39,8 @@ const { locale } = useI18n();
 const { setStaticPageMeta } = useCanonical();
 
 const { drawerOpen, currentFont, placement } = useSiteConfiguration();
-
-const isPreview = ref(false);
+const { isPreview } = useBlockManager();
 const config = useRuntimeConfig().public;
-const showConfigurationDrawer = config.showConfigurationDrawer;
-
-onMounted(() => {
-  const pwaCookie = useCookie('pwa');
-  isPreview.value = !!pwaCookie.value || (showConfigurationDrawer as boolean);
-});
 
 await setInitialDataSSR();
 setVsfLocale(locale.value);
