@@ -13,8 +13,10 @@
         <SfIconTune />
       </button>
 
-      <div class="absolute left-1/2 transform -translate-x-1/2">
+ 
+      <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-2">
         <UiLanguageEditor />
+        <UiPageSelector />
       </div>
       <div class="ml-auto flex space-x-2">
         <button
@@ -60,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import { UiPageSelector } from '#components';
 import { SfLoaderCircular, SfIconBase, SfIconVisibility, SfIconTune } from '@storefront-ui/vue';
 import { editPath } from 'assets/icons/paths/edit';
 import { savePath } from '~/assets/icons/paths/save';
