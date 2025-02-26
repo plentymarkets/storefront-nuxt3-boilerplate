@@ -24,7 +24,8 @@ const updatePageTemplate = async (): Promise<boolean> => {
   } finally {
     loading.value = false;
     isEditingEnabled.value = false;
-    initialBlocks.value = structuredClone(toRaw(data.value.blocks));
+    const rawBlocks = JSON.parse(JSON.stringify(toRaw(data.value.blocks)));
+    initialBlocks.value = structuredClone(rawBlocks);
   }
 };
 

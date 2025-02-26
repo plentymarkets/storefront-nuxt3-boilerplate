@@ -10,6 +10,9 @@
       class="fixed top-[50%] right-0 left-0 m-auto z-[99999]"
       size="2xl"
     />
+    <template v-if="isEditablePage">
+      <EditablePage />
+    </template>
     <template v-else>
       <CategoryPageContent
         v-if="productsCatalog?.products"
@@ -41,6 +44,7 @@ const router = useRouter();
 const { data: productsCatalog, productsPerPage, loading, checkingPermission } = useProducts();
 const { data: categoryTree } = useCategoryTree();
 const { buildCategoryLanguagePath } = useLocalization();
+const { isEditablePage } = useToolbar();
 
 const breadcrumbs = computed(() => {
   if (productsCatalog.value.category) {

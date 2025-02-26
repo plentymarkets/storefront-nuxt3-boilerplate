@@ -15,6 +15,7 @@
 ### New
 
 - Added success and error notifications when saving changes in the editor.
+- The editor toolbar now supports all the editable pages.
 
 ### 🩹 Fixed
 

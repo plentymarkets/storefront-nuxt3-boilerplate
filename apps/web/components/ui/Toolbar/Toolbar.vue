@@ -37,8 +37,8 @@
         </button>
         <button
           class="self-start bg-[#062633] text-white px-2 py-1 rounded-md font-inter font-medium text-sm leading-5 flex items-center md:px-4 md:py-2 md:text-base md:leading-6"
-          :class="{ 'opacity-40 cursor-not-allowed': !isTouched || settingsLoading }"
-          :disabled="!isTouched || settingsLoading"
+          :class="{ 'opacity-40 cursor-not-allowed': !isTouched || settingsLoading || !isTempSavable }"
+          :disabled="!isTouched || settingsLoading || !isTempSavable"
           data-testid="edit-save-button"
           @click="save"
         >
@@ -78,6 +78,10 @@ const { save } = useToolbar();
 const homepageCategoryId = runtimeConfig.public.homepageCategoryId;
 const isLocalTemplate = computed(() => typeof homepageCategoryId !== 'number');
 const isTouched = computed(() => settingsIsDirty.value || (!isLocalTemplate.value && isEditingEnabled.value));
+
+// TODO: Remove this part here so we enable the save button for every EditablePage
+const route = useRoute();
+const isTempSavable = computed(() => route.path === '/');
 
 const toggleSettingsDrawer = () => {
   drawerView.value === 'settings' ? closeDrawer() : openDrawerWithView('settings');

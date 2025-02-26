@@ -45,7 +45,11 @@ export const useHomepage: UseHomepageDataReturn = () => {
   const fetchPageTemplate = async (): Promise<void> => {
     state.value.loading = true;
 
-    await initializeHomepageTemplate();
+    // TODO: Remove this part here so we enable the save button for every EditablePage
+    const route = useRoute();
+    if (route.path === '/') {
+      await initializeHomepageTemplate();
+    }
     state.value.dataIsEmpty = !state.value.data.blocks || state.value.data.blocks.length === 0;
 
     state.value.loading = false;
