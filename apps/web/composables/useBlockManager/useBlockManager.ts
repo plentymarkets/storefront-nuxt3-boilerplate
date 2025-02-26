@@ -1,4 +1,5 @@
-import { blocksLists } from '~/blocks/blocksLists';
+import type { BlocksList } from '../../components/BlocksNavigationList/types';
+const blocksLists = ref<BlocksList>({});
 
 const isEmptyBlock = (block: Block): boolean => {
   const options = block?.options;
@@ -24,8 +25,20 @@ export const useBlockManager = () => {
 
   const isPreview = ref(false);
 
+  const getBlocksLists = async () => {
+    try {
+      const response = await fetch('/blocks/blocksLists.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      blocksLists.value = await response.json();
+    } catch (error) {
+      throw new Error(`Failed to fetch blocksLists: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
   const getTemplateByLanguage = (category: string, variationIndex: number, lang: string) => {
-    const variationsInCategory = blocksLists[category];
+    const variationsInCategory = blocksLists.value[category];
     const variationToAdd = variationsInCategory.variations[variationIndex];
     const variationTemplate = variationToAdd.template;
 
@@ -56,6 +69,7 @@ export const useBlockManager = () => {
   const isLastBlock = (index: number) => index === data.value.blocks.length - 1;
 
   onMounted(() => {
+    getBlocksLists();
     const config = useRuntimeConfig().public;
     const showConfigurationDrawer = config.showConfigurationDrawer;
     const pwaCookie = useCookie('pwa');

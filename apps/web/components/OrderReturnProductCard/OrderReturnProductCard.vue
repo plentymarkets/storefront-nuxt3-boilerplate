@@ -123,7 +123,7 @@
 import { orderGetters } from '@plentymarkets/shop-api';
 import { SfLink, SfSelect, SfIconChevronLeft, SfAccordionItem, SfLoaderCircular } from '@storefront-ui/vue';
 import type { OrderSummaryProductCardProps } from './types';
-import _ from 'lodash';
+import { debounce } from 'lodash-es';
 
 const { addModernImageExtension } = useModernImage();
 const { updateQuantity, updateReason, returnData } = useReturnOrder();
@@ -176,5 +176,5 @@ const returnReasonId = computed(
 const displayItem = computed(
   () => props.orderItem.typeId !== 6 && orderGetters.getItemReturnableQty(props.orderItem) > 0,
 );
-const debounceQuantity = _.debounce(changeQuantity, 500);
+const debounceQuantity = debounce(changeQuantity, 500);
 </script>

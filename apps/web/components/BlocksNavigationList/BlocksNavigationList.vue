@@ -28,8 +28,23 @@
 </template>
 
 <script setup lang="ts">
-import { blocksLists } from '~/blocks/blocksLists';
 import { SfIconAdd } from '@storefront-ui/vue';
+import type { Category } from './types';
+
+const blocksLists = ref<Category[]>([]);
+
+const getBlocksLists = async () => {
+  try {
+    const response = await fetch('/blocks/blocksLists.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    blocksLists.value = await response.json();
+  } catch (error: unknown) {
+    throw new Error(`Failed to fetch blocksLists: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
+};
+getBlocksLists();
 
 const { addNewBlock } = useBlockManager();
 const { newBlockPosition, openDrawerWithView } = useSiteConfiguration();

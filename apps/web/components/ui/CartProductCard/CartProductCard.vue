@@ -129,7 +129,7 @@ import { productGetters, productBundleGetters, cartGetters } from '@plentymarket
 import { SfLink, SfLoaderCircular, SfIconClose } from '@storefront-ui/vue';
 import type { CartProductCardProps } from '~/components/ui/CartProductCard/types';
 import type { Product } from '@plentymarkets/shop-api';
-import _ from 'lodash';
+import { debounce } from 'lodash-es';
 
 const { cartItem, disabled = false } = defineProps<CartProductCardProps>();
 const emit = defineEmits(['load']);
@@ -218,7 +218,7 @@ const cartItemImage = computed(() => {
   return '';
 });
 
-const debounceQuantity = _.debounce(changeQuantity, 500);
+const debounceQuantity = debounce(changeQuantity, 500);
 
 const NuxtLink = resolveComponent('NuxtLink');
 

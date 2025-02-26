@@ -19,3 +19,15 @@ export type BlocksList = {
     }[];
   };
 };
+
+export interface Category {
+  title: string;
+  blockName: string;
+  category: string;
+  variations: Variation[];
+}
+
+interface Variation {
+  image: string;
+  title: string;
+}
