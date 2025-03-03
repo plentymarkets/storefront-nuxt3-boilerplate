@@ -39,7 +39,7 @@ const {
 } = useBlockManager();
 
 definePageMeta({
-  middleware: ['newsletter-confirmation', 'mollie'],
+  middleware: ['newsletter-confirmation'],
 })
 
 const { settingsIsDirty, openDrawerWithView, updateNewBlockPosition } = useSiteConfiguration();
