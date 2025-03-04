@@ -1,23 +1,21 @@
 <template>
-  <div
-    data-testid="text-image-parent"
-    :style="{ color: props.text?.color }"
-    :class="['flex flex-col items-center', positionClass]"
-  >
+  <div class="flex justify-center">
     <NuxtImg
       :src="getImageUrl()"
-      :alt="props.image?.alt"
+      :alt="props.content?.alt"
       :class="[
-        'lg:w-1/2',
         'object-cover',
         'md:px-4',
-        { 'lg:pr-4': props.image?.imageAlignment === 'left', 'lg:pl-4': props.image?.imageAlignment === 'right' },
+
+        {
+          'lg:pr-4': props.content?.imageAlignment === 'left',
+          'lg:pl-4': props.content?.imageAlignment === 'right',
+        },
       ]"
       :width="getImageDimensions().width"
       :height="getImageDimensions().height"
       data-testid="image-block"
     />
-    <TextContent class="lg:w-1/2" :index="props.index" :text="props.text" :button="props.button" />
   </div>
 </template>
 
@@ -28,21 +26,19 @@ const viewport = useViewport();
 
 const props = defineProps<ImageTextProps>();
 
-const positionClass = computed(() => (props.image?.imageAlignment === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'));
-
 const getImageUrl = () => {
   switch (viewport.breakpoint.value) {
     case '4xl': {
-      return props.image?.wideScreen;
+      return props.content?.wideScreen;
     }
     case 'lg': {
-      return props.image?.desktop;
+      return props.content?.desktop;
     }
     case 'md': {
-      return props.image?.tablet;
+      return props.content?.tablet;
     }
     default: {
-      return props.image?.mobile;
+      return props.content?.mobile;
     }
   }
 };

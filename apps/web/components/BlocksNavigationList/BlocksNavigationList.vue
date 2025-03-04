@@ -15,8 +15,8 @@
             ]"
             :data-testid="'block-add-' + categoryIndex + '-' + variationIndex"
             @click="
+              drawerOpen = false;
               addBlock(category.category, variationIndex);
-              openSettingsDrawer(category.blockName);
             "
           >
             <SfIconAdd class="cursor-pointer" />
@@ -29,9 +29,9 @@
 
 <script setup lang="ts">
 import { SfIconAdd } from '@storefront-ui/vue';
-import type { Category } from './types';
+import type { BlocksList } from './types';
 
-const blocksLists = ref<Category[]>([]);
+const blocksLists = ref<BlocksList>({});
 
 const getBlocksLists = async () => {
   try {
@@ -46,14 +46,10 @@ const getBlocksLists = async () => {
 };
 getBlocksLists();
 
-const { addNewBlock } = useBlockManager();
-const { newBlockPosition, openDrawerWithView } = useSiteConfiguration();
+const { addNewBlock, visiblePlaceholder } = useBlockManager();
+const { drawerOpen } = useSiteConfiguration();
 
 const addBlock = (category: string, variationIndex: number) => {
-  addNewBlock(category, variationIndex, newBlockPosition.value);
-};
-
-const openSettingsDrawer = (blockName: string) => {
-  openDrawerWithView('blocksSettings', blockName, newBlockPosition.value);
+  addNewBlock(category, variationIndex, visiblePlaceholder.value.uuid, visiblePlaceholder.value.position);
 };
 </script>

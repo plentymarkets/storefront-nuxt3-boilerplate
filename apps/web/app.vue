@@ -37,6 +37,7 @@ const { setVsfLocale } = useLocalization();
 const route = useRoute();
 const { locale } = useI18n();
 const { setStaticPageMeta } = useCanonical();
+const { getBlocksLists } = useBlockManager();
 
 const { drawerOpen, currentFont, placement } = useSiteConfiguration();
 
@@ -45,6 +46,7 @@ const config = useRuntimeConfig().public;
 const showConfigurationDrawer = config.showConfigurationDrawer;
 
 onMounted(() => {
+  getBlocksLists();
   const pwaCookie = useCookie('pwa');
   isPreview.value = !!pwaCookie.value || (showConfigurationDrawer as boolean);
 });

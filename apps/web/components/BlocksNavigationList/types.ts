@@ -7,14 +7,8 @@ export type BlocksList = {
       title: string;
       image: string;
       template: {
-        en: {
-          name: string;
-          options: Record<string, unknown>;
-        };
-        de: {
-          name: string;
-          options: Record<string, unknown>;
-        };
+        en: Block;
+        de: Block;
       };
     }[];
   };

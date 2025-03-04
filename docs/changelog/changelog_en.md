@@ -18,6 +18,7 @@
 ### New
 
 - Added success and error notifications when saving changes in the editor.
+- Added block structures and refactored the editor to support them, including adding api endpoint communication.
 
 ### 🩹 Fixed
 

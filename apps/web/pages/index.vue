@@ -1,59 +1,41 @@
 <template>
   <div>
-    <EmptyBlock v-if="dataIsEmpty" @add-new-block="openBlockList" />
-    <div class="content">
-      <template v-for="(block, index) in data.blocks" :key="index">
+    <EmptyBlock v-if="dataIsEmpty" />
+    <div v-if="data.length" class="content">
+      <template v-for="(block, index) in data" :key="index">
         <PageBlock
           :index="index"
           :block="block"
-          :is-preview="isPreview"
           :disable-actions="disableActions"
           :is-clicked="isClicked"
           :clicked-block-index="clickedBlockIndex"
           :is-tablet="isTablet"
           :block-has-data="blockHasData"
           :tablet-edit="tabletEdit"
-          :add-new-block="openBlockList"
           :change-block-position="changeBlockPosition"
-          :is-last-block="isLastBlock"
-          :delete-block="deleteBlock"
+          :root="true"
+          :class="[
+            {
+              'max-w-screen-3xl mx-auto md:px-6 lg:px-10 mt-3': block.name !== 'Banner' && block.name !== 'Carousel',
+            },
+          ]"
         />
       </template>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { watchDebounced } from '@vueuse/core';
+const { isClicked, clickedBlockIndex, isTablet, blockHasData, tabletEdit, changeBlockPosition } = useBlockManager();
 
-const {
-  isClicked,
-  clickedBlockIndex,
-  isTablet,
-  isPreview,
-  blockHasData,
-  tabletEdit,
-  deleteBlock,
-  changeBlockPosition,
-  isLastBlock,
-  togglePlaceholder,
-} = useBlockManager();
+const { settingsIsDirty } = useSiteConfiguration();
 
-const { settingsIsDirty, openDrawerWithView, updateNewBlockPosition } = useSiteConfiguration();
+const { data, getBlocks } = useCategoryTemplate();
 
-const { data, fetchPageTemplate, dataIsEmpty, initialBlocks } = useHomepage();
+const dataIsEmpty = computed(() => data.value.length === 0);
 
 const { isEditingEnabled, disableActions } = useEditor();
 const { getRobots, setRobotForStaticPage } = useRobots();
-
-const openBlockList = (index: number, position: number) => {
-  const insertIndex = (position === -1 ? index : index + 1) || 0;
-  togglePlaceholder(index, position === -1 ? 'top' : 'bottom');
-  updateNewBlockPosition(insertIndex);
-  openDrawerWithView('blocksList');
-};
-
-await getRobots();
-setRobotForStaticPage('Homepage');
+await getBlocks('index', 'immutable');
 
 onMounted(() => {
   isEditingEnabled.value = false;
@@ -73,13 +55,6 @@ const handleBeforeUnload = (event: BeforeUnloadEvent) => {
   event.preventDefault();
 };
 
-fetchPageTemplate();
-
-watchDebounced(
-  () => data.value.blocks,
-  () => {
-    isEditingEnabled.value = !deepEqual(initialBlocks.value, data.value.blocks);
-  },
-  { debounce: 100, deep: true },
-);
+getRobots();
+setRobotForStaticPage('Homepage');
 </script>

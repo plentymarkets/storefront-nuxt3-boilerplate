@@ -30,7 +30,7 @@ export const useSiteConfiguration: UseSiteConfigurationReturn = () => {
     secondaryColor: useRuntimeConfig().public.secondaryColor,
     drawerView: null,
     blockType: '',
-    blockIndex: 0,
+    blockUuid: '',
     blockSize: useRuntimeConfig().public.blockSize,
     selectedFont: { caption: useRuntimeConfig().public.font, value: useRuntimeConfig().public.font },
     initialData: {
@@ -98,16 +98,20 @@ export const useSiteConfiguration: UseSiteConfigurationReturn = () => {
     },
   );
 
-  const openDrawerWithView = (view: DrawerView, type: string = '', blockIndex: number = 0) => {
-    const { setIndex } = useHomepage();
+  const openDrawerWithView = (view: DrawerView, block?: Block) => {
+    if (block) {
+      if (block.name === 'Carousel') {
+        const { setIndex } = useCarousel();
 
-    setIndex(blockIndex, 0);
+        setIndex(block.meta.uuid, 0);
+      }
+
+      state.value.blockType = block.name;
+      state.value.blockUuid = block.meta.uuid;
+    }
 
     state.value.drawerView = view;
     state.value.drawerOpen = true;
-
-    state.value.blockType = type;
-    state.value.blockIndex = blockIndex;
 
     state.value.placement = view === 'blocksSettings' ? 'right' : 'left';
   };
