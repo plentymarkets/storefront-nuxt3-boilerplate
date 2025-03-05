@@ -7,6 +7,9 @@ export const useToolbar = () => {
   const isLocalTemplate = computed(() => typeof homepageCategoryId !== 'number');
   const { saveSettings, settingsIsDirty } = useSiteConfiguration();
   const { updatePageTemplate } = useUpdatePageTemplate();
+  const { data: dataProduct } = useProducts();
+  const route = useRoute();
+  const { isHomepageRoute } = useHomepage();
 
   const save = async () => {
     const messageList: string[] = [];
@@ -45,5 +48,9 @@ export const useToolbar = () => {
     }
   };
 
-  return { save };
+  const isEditablePage = computed(() => {
+    return isHomepageRoute(route.path) || dataProduct.value.category?.type === 'content';
+  });
+
+  return { save, isEditablePage };
 };

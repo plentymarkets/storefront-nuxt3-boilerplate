@@ -40,10 +40,9 @@ const {
 
 const { settingsIsDirty, openDrawerWithView, updateNewBlockPosition, closeDrawer } = useSiteConfiguration();
 
-const { data, fetchPageTemplate, dataIsEmpty, initialBlocks } = useHomepage();
+const { data, dataIsEmpty, initialBlocks, fetchPageTemplate } = useCategoryPage();
 
 const { isEditingEnabled, disableActions } = useEditor();
-const { getRobots, setRobotForStaticPage } = useRobots();
 
 const openBlockList = (index: number, position: number) => {
   const insertIndex = (position === -1 ? index : index + 1) || 0;
@@ -51,9 +50,6 @@ const openBlockList = (index: number, position: number) => {
   updateNewBlockPosition(insertIndex);
   openDrawerWithView('blocksList');
 };
-
-await getRobots();
-setRobotForStaticPage('Homepage');
 
 onMounted(() => {
   isEditingEnabled.value = false;

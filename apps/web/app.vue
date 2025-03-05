@@ -37,7 +37,6 @@ const { setVsfLocale } = useLocalization();
 const route = useRoute();
 const { locale } = useI18n();
 const { setStaticPageMeta } = useCanonical();
-
 const { drawerOpen, currentFont, placement } = useSiteConfiguration();
 
 const isPreview = ref(false);

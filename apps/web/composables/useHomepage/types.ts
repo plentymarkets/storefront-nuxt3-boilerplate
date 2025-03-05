@@ -83,6 +83,7 @@ export interface UseHomepage {
   fetchPageTemplate: () => void;
   updateBannerItems: UpdateBannerItems;
   setIndex: SetIndex;
+  isHomepageRoute: (path: string) => boolean;
 }
 
 export type UseHomepageDataReturn = () => UseHomepage;
