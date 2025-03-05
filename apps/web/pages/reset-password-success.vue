@@ -36,6 +36,12 @@ definePageMeta({
   layout: false,
 });
 
+const { t } = useI18n();
+const { setPageMeta } = usePageMeta();
+
+const icon = 'page';
+setPageMeta(t('auth.resetPassword.headingSuccess'), icon);
+
 const localePath = useLocalePath();
 
 const email = ref('hieronim.anonim@gmail.com');

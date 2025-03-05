@@ -42,6 +42,7 @@
 <script setup lang="ts">
 import { SfLoaderCircular } from '@storefront-ui/vue';
 import { cartGetters } from '@plentymarkets/shop-api';
+const { setPageMeta } = usePageMeta();
 
 definePageMeta({ pageType: 'static' });
 
@@ -52,4 +53,7 @@ const localePath = useLocalePath();
 const { isAuthorized } = useCustomer();
 const { data: cart, cartIsEmpty, loading } = useCart();
 const goToCheckout = () => (isAuthorized.value ? localePath(paths.checkout) : localePath(paths.guestLogin));
+
+const icon = 'page';
+setPageMeta(t('cart'), icon);
 </script>

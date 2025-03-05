@@ -5,6 +5,8 @@
 <script setup lang="ts">
 const { data, getLegalTexts } = useLegalInformation();
 const { getRobots, setRobotForStaticPage } = useRobots();
+const { setPageMeta } = usePageMeta();
+const { t } = useI18n();
 
 definePageMeta({
   pageType: 'static',
@@ -17,6 +19,9 @@ await getLegalTexts({
 const getHTMLTexts = () => {
   return data.value.htmlText ?? '';
 };
+
+const icon = 'page';
+setPageMeta(t('cancellationRights'), icon);
 
 await getRobots();
 setRobotForStaticPage('CancellationRights');

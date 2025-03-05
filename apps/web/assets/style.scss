@@ -39,10 +39,12 @@ apple-pay-button {
 
 .swiper-button-prev {
   color: rgb(var(--colors-2-primary-500)) !important;
+  z-index: 0 !important;
 }
 
 .swiper-button-next {
   color: rgb(var(--colors-2-primary-500)) !important;
+  z-index: 0 !important;
 }
 
 #google-pay-button {

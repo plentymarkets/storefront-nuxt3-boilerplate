@@ -56,6 +56,12 @@ const breadcrumbs = computed(() => {
   return [];
 });
 
+const { setPageMeta } = usePageMeta();
+
+const categoryName = computed(() => categoryGetters.getCategoryName(productsCatalog.value.category));
+const icon = 'sell';
+setPageMeta(categoryName.value, icon);
+
 watch(
   () => locale.value,
   (changedLocale: string) => {

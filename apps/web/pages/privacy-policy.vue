@@ -10,6 +10,12 @@ definePageMeta({
   pageType: 'static',
 });
 
+const { t } = useI18n();
+const { setPageMeta } = usePageMeta();
+
+const icon = 'page';
+setPageMeta(t('CookieBar.keys.PrivacyPolicy'), icon);
+
 await getLegalTexts({
   type: 'PrivacyPolicy',
 });
