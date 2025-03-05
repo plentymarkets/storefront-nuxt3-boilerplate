@@ -587,6 +587,7 @@
   "guestCheckout": "Guest checkout",
   "home": "Home",
   "homepage": {
+    "homepagetitle": "Homepage",
     "background": "New Wireless Pro headphones with sleek design and modern features",
     "emptyBlock": {
       "headline": "Add the first block here."

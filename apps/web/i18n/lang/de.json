@@ -587,6 +587,7 @@
   "guestCheckout": "Gast Checkout",
   "home": "Startseite",
   "homepage": {
+    "homepagetitle": "Startseite",
     "background": "Neue Wireless Pro Kopfhörer mit elegantem Design und modernen Funktionen",
     "emptyBlock": {
       "headline": "Hier den ersten Abschnitt hinzufügen."

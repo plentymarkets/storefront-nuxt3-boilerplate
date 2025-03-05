@@ -5,8 +5,20 @@
   >
     <div class="relative flex items-center pr-5">
       <UiBrandLogo />
-      <div class="absolute left-1/2 transform -translate-x-1/2">
+
+      <button
+        type="button"
+        class="editor-button relative ml-4"
+        aria-label="Open configuration drawer"
+        data-testid="open-settings-drawer"
+        @click="toggleSettingsDrawer"
+      >
+        <SfIconTune />
+      </button>
+
+      <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-2">
         <UiLanguageEditor />
+        <UiPageSelector />
       </div>
       <div class="ml-auto flex space-x-2">
         <button

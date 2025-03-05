@@ -1,20 +1,15 @@
 <template>
   <div
-    class="flex items-center space-x-1 md:space-x-2"
+    class="flex items-center space-x-1 md:space-x-2 "
     :class="{ 'opacity-40 cursor-not-allowed': isEditing || disableActions }"
   >
     <SfIconLanguage class="w-4 h-4 md:w-6 md:h-6" />
-    <div class="relative">
+    <div class="relative flex items-center">
       <select
         v-model="currentLocale"
-        class="form-select focus:outline-none focus:ring-0 focus:border-transparent text-sm md:text-base appearance-none pr-4"
-        style="
-          background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuNzA3MTcsNC4yOTI4N0w4LjAwMDAxLDEwLjU4NTdsNi4yOTI4My02LjI5Mjg3IiBzdHJva2U9IiMwNjI2MzMiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K')
-            no-repeat right 0.35rem center;
-          background-size: 12px 12px;
-        "
+        class="form-select focus:outline-none focus:ring-0 focus:border-transparent text-sm md:text-base appearance-none"
         :disabled="isEditing || disableActions"
-        :class="{ 'cursor-not-allowed': isEditing || disableActions }"
+        :class="{ 'cursor-not-allowed': isEditing || disableActions, 'cursor-pointer': !isEditing && !disableActions }"
         data-testid="editor-language-select"
         @change="switchLanguage(currentLocale)"
       >
@@ -22,12 +17,15 @@
           {{ $t(`lang.${locale}`) }}
         </option>
       </select>
+      <div class="flex items-center">
+        <SfIconExpandMore class="w-4 h-4 md:w-6 md:h-6" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SfIconLanguage } from '@storefront-ui/vue';
+import { SfIconLanguage, SfIconExpandMore } from '@storefront-ui/vue';
 import type { Locale } from 'vue-i18n';
 import { useI18n } from 'vue-i18n';
 
