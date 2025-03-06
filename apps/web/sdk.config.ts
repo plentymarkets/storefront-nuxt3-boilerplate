@@ -1,9 +1,9 @@
 import type { Endpoints } from '@plentymarkets/shop-api';
 import { httpClient } from './sdk.client';
 
-export default defineSdkConfig(({ buildModule, middlewareUrl, middlewareModule, getRequestHeaders }) => ({
+export default defineSdkConfig(({ buildModule, config, middlewareModule, getRequestHeaders }) => ({
   plentysystems: buildModule(middlewareModule<Endpoints>, {
-    apiUrl: middlewareUrl + '/plentysystems',
+    apiUrl: config.apiUrl + '/plentysystems',
     defaultRequestConfig: {
       headers: getRequestHeaders(),
     },
