@@ -52,8 +52,8 @@ function sortingChanged() {
 }
 
 function sortQueryChanged() {
-  const facets = getFacetsFromURL();
-  selected.value = facets.sort ?? options.value[0].value;
+  const sortByValue = useNuxtApp().$router.currentRoute.value.query.sort;
+  selected.value = typeof sortByValue === 'string' ? sortByValue : options.value[0].value;
 }
 
 sortQueryChanged();

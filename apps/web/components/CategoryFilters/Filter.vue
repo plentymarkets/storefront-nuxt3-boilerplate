@@ -134,7 +134,7 @@ function resetPriceFilter() {
 }
 
 const updateFilter = () => {
-  const currentFacets = getFacetsFromURL().facets?.split(',') ?? [];
+  const currentFacets = useNuxtApp().$router.currentRoute.value.query.facets?.toString().split(',') ?? [];
   for (const filter of filters) {
     const filterId = typeof filter.id === 'string' ? filter.id : filter.id.toString();
 

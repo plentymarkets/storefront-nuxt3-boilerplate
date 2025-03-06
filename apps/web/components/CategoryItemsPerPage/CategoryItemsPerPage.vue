@@ -57,4 +57,16 @@ const selectedValue =
     : facetsFromURL.itemsPerPage?.toString() || lastDisabledValue;
 
 const selected = ref(selectedValue);
+
+function itemsPerPageQueryChanged() {
+  const itemsPerPageValue = useNuxtApp().$router.currentRoute.value.query.itemsPerPage;
+  selected.value = typeof itemsPerPageValue === 'string' ? itemsPerPageValue : lastDisabledValue;
+}
+
+watch(
+  () => useNuxtApp().$router.currentRoute.value.query.itemsPerPage,
+  () => {
+    itemsPerPageQueryChanged();
+  },
+);
 </script>
