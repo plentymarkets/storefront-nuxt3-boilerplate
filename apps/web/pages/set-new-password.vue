@@ -30,6 +30,12 @@ definePageMeta({
   layout: false,
 });
 
+const { t } = useI18n();
+const { setPageMeta } = usePageMeta();
+
+const icon = 'page';
+setPageMeta(t('auth.setNewPassword.button'), icon);
+
 const password = ref('');
 const repeatedPassword = ref('');
 </script>

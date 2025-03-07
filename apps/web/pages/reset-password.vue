@@ -28,6 +28,12 @@ definePageMeta({
   layout: false,
 });
 
+const { t } = useI18n();
+const { setPageMeta } = usePageMeta();
+
+const icon = 'page';
+setPageMeta(t('auth.resetPassword.heading'), icon);
+
 const customerEmail = ref('');
 const resetPassword = () => navigateTo(localePath(paths.authResetPasswordSuccess));
 const NuxtLink = resolveComponent('NuxtLink');

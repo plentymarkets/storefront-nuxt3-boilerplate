@@ -149,6 +149,11 @@ const turnstileElement = ref();
 const { send } = useNotification();
 const { getRobots, setRobotForStaticPage } = useRobots();
 
+const { setPageMeta } = usePageMeta();
+
+const icon = 'page';
+setPageMeta(t('categories.contact.label'), icon);
+
 const validationSchema = toTypedSchema(
   object({
     name: string().required(t('errorMessages.contact.nameRequired')).default(''),
