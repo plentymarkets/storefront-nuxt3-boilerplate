@@ -55,11 +55,6 @@
       </h3>
     </header>
     <AccountFormsName v-if="openedForm === 'yourName'" @on-save="closeModal" @on-cancel="closeModal" />
-    <ContactInformationForm
-      v-else-if="openedForm === 'contactInformation'"
-      @on-save="closeModal"
-      @on-cancel="closeModal"
-    />
     <AccountFormsPassword v-else-if="openedForm === 'passwordChange'" @on-save="closeModal" @on-cancel="closeModal" />
   </UiModal>
 </template>

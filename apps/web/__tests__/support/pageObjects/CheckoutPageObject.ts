@@ -178,9 +178,8 @@ export class CheckoutPageObject extends PageObject {
 
   fillContactInformationForm() {
     cy.getFixture('addressForm').then(() => {
-      const uniqueEmail = `test-order-${new Date().getTime()}@plentymarkets.com`;
+      const uniqueEmail = `test.order${new Date().getTime()}@plentymarkets.com`;
       this.contactInformationForm.type(uniqueEmail);
-      this.contactInformationFormSaveButton.click().should('not.exist');
     });
     return this;
   }

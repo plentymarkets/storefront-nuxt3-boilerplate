@@ -21,6 +21,8 @@
 
 ### 👷 Changed
 
+- Auto-save implemented for email address in the guest checkout flow.
+- Added login option for a guest user in the checkout flow.
 - The address saving buttons have been relocated to the bottom of the form to enhance the user experience.
 - Reduced chunck size by moving heavy files to public folder fetching the data instead of importing it
 - Reduced chunk size by removing the lodash library completely and using custom js functions

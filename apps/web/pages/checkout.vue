@@ -7,8 +7,8 @@
   >
     <div v-if="cart" class="lg:grid lg:grid-cols-12 lg:gap-x-6">
       <div class="col-span-6 xl:col-span-7 mb-10 lg:mb-0">
-        <UiDivider class="w-screen md:w-auto -mx-4 md:mx-0" />
-        <ContactInformation />
+        <UiDivider id="top-contact-information-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
+        <ContactInformation id="contact-information" />
         <UiDivider id="top-shipping-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
         <AddressContainer id="shipping-address" :key="0" :type="AddressType.Shipping" />
         <UiDivider id="top-billing-divider" class="w-screen md:w-auto -mx-4 md:mx-0" />
@@ -95,17 +95,17 @@
 </template>
 
 <script setup lang="ts">
+import { AddressType, cartGetters, paymentProviderGetters } from '@plentymarkets/shop-api';
 import { SfLoaderCircular } from '@storefront-ui/vue';
-import { keyBy } from '~/utils/keyBy';
 import PayPalExpressButton from '~/components/PayPal/PayPalExpressButton.vue';
-import {
-  PayPalCreditCardPaymentKey,
-  PayPalPaymentKey,
-  PayPalGooglePayKey,
-  PayPalApplePayKey,
-} from '~/composables/usePayPal/types';
-import { AddressType, paymentProviderGetters, cartGetters } from '@plentymarkets/shop-api';
 import type { PayPalAddToCartCallback } from '~/components/PayPal/types';
+import {
+  PayPalApplePayKey,
+  PayPalCreditCardPaymentKey,
+  PayPalGooglePayKey,
+  PayPalPaymentKey,
+} from '~/composables/usePayPal/types';
+import { keyBy } from '~/utils/keyBy';
 
 definePageMeta({
   layout: 'simplified-header-and-footer',
@@ -121,6 +121,7 @@ const { loading: createOrderLoading, createOrder } = useMakeOrder();
 const { shippingPrivacyAgreement } = useAdditionalInformation();
 const { emit } = usePlentyEvent();
 const { checkboxValue: termsAccepted } = useAgreementCheckbox('checkoutGeneralTerms');
+const { isGuest, isAuthorized, validGuestEmail, backToContactInformation } = useCustomer();
 const {
   cart,
   cartIsEmpty,
@@ -211,6 +212,10 @@ const paypalApplePayPaymentId = computed(() => {
 });
 
 const readyToBuy = () => {
+  if ((!isAuthorized.value && !isGuest.value) || (isGuest.value && !validGuestEmail.value)) {
+    return backToContactInformation();
+  }
+
   if (anyAddressFormIsOpen.value) {
     send({ type: 'secondary', message: t('unsavedAddress') });
     return backToFormEditing();

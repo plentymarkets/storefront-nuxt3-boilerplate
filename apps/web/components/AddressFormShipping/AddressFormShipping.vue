@@ -168,14 +168,14 @@
 </template>
 
 <script setup lang="ts">
-import { SfInput, SfSelect, SfLink, SfCheckbox, SfIconClose } from '@storefront-ui/vue';
-import { useForm, ErrorMessage } from 'vee-validate';
-import type { AddressFormShippingProps } from './types';
 import { type Address, AddressType, userAddressGetters } from '@plentymarkets/shop-api';
+import { SfCheckbox, SfIconClose, SfInput, SfLink, SfSelect } from '@storefront-ui/vue';
+import { ErrorMessage, useForm } from 'vee-validate';
+import type { AddressFormShippingProps } from './types';
 
 const { disabled, address, addAddress = false } = defineProps<AddressFormShippingProps>();
 
-const { isGuest } = useCustomer();
+const { isGuest, validGuestEmail } = useCustomer();
 const { default: shippingCountries } = useAggregatedCountries();
 const { shippingAsBilling } = useShippingAsBilling();
 const { handleCartTotalChanges } = useCartTotalChange();
@@ -266,6 +266,8 @@ const handleBillingPrimaryAddress = async () => {
 
 const validateAndSubmitForm = async () => {
   const formData = await validate();
+
+  if (formIsLoading.value || (isGuest.value && !validGuestEmail.value)) return;
 
   if (formData.valid) {
     await submitForm();

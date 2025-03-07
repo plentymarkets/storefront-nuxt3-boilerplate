@@ -161,14 +161,14 @@
 </template>
 
 <script setup lang="ts">
-import { SfInput, SfSelect, SfLink, SfIconClose } from '@storefront-ui/vue';
-import { useForm, ErrorMessage } from 'vee-validate';
-import type { AddressFormBillingProps } from './types';
 import { type Address, AddressType, userAddressGetters } from '@plentymarkets/shop-api';
+import { SfIconClose, SfInput, SfLink, SfSelect } from '@storefront-ui/vue';
+import { ErrorMessage, useForm } from 'vee-validate';
+import type { AddressFormBillingProps } from './types';
 
 const { disabled, address, addAddress = false } = defineProps<AddressFormBillingProps>();
 
-const { isGuest } = useCustomer();
+const { isGuest, validGuestEmail } = useCustomer();
 const { shippingAsBilling } = useShippingAsBilling();
 const {
   isLoading: formIsLoading,
@@ -223,6 +223,8 @@ const syncCheckoutAddress = async () => {
 
 const validateAndSubmitForm = async () => {
   const formData = await validate();
+
+  if (formIsLoading.value || (isGuest.value && !validGuestEmail.value)) return;
 
   if (formData.valid) {
     await submitForm();
